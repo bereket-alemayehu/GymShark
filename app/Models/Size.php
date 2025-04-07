@@ -5,20 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class Size extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
-    public function subcategory() {
-        return $this->belongsTo(ProductSubCategory::class);
-    }
-    
     public function variants() {
         return $this->hasMany(ProductVariant::class);
     }
-    
+    public function products() {
+        return $this->hasManyThrough(Product::class, ProductVariant::class);
+    }
     public function images() {
         return $this->hasManyThrough(ProductImages::class, ProductVariant::class);
     }
-    
 }

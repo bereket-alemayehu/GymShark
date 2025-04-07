@@ -15,12 +15,12 @@ return new class extends Migration
         Schema::create('product_variants', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Product::class)->constrained()->cascadeOnDelete();
-            $table->string('sku')->unique();
-            $table->string('size');
-            $table->string('color');
-            $table->decimal('price', 15, 2);
-            $table->decimal('sale_price', 15, 2)->nullable();
-            $table->integer('stock_quantity')->default(0);
+            $table->foreignId('product_id')->constrained()->onDelete('cascade'); // Link to Product (e.g., Basic T-shirt)
+            $table->foreignId('color_id')->constrained()->onDelete('cascade'); // Link to color (e.g., Red)
+            $table->foreignId('size_id')->constrained()->onDelete('cascade'); // Link to size (e.g., M)
+            $table->string('sku')->unique(); // Stock keeping unit, unique for each variant
+            $table->decimal('price', 15, 2); // Price for this specific variant (could be different from base price)
+            $table->integer('stock_quantity')->default(0); // Stock for this variant
             $table->timestamps();
         });
     }
