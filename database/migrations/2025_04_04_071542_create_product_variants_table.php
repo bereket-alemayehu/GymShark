@@ -20,7 +20,6 @@ return new class extends Migration
             $table->foreignId('size_id')->constrained()->onDelete('cascade'); // Link to size (e.g., M)
             $table->string('sku')->unique(); // Stock keeping unit, unique for each variant
             $table->decimal('price', 15, 2); // Price for this specific variant (could be different from base price)
-            $table->integer('stock_quantity')->default(0); // Stock for this variant
             $table->timestamps();
         });
     }

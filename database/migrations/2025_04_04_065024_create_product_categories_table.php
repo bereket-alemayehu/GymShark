@@ -16,7 +16,6 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('slug')->unique();
-            $table->foreignIdFor(ProductCategory::class)->nullable()->constrained('product_categories')->onDelete('cascade');
             $table->string('description')->nullable();
             $table->timestamps();
         });

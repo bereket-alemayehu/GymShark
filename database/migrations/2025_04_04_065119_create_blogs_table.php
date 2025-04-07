@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\BlogCategory;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,6 +14,11 @@ return new class extends Migration
     {
         Schema::create('blogs', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('thumbnail')->nullable();
+            $table->foreignIdFor(BlogCategory::class)->nullable()->constrained()->cascadeOnDelete();            
+            $table->text('content')->nullable();
+            $table->date('published_at')->nullable(); // Date when the blog was published
             $table->timestamps();
         });
     }

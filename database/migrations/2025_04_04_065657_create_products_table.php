@@ -18,10 +18,15 @@ return new class extends Migration
             $table->string('name');
             $table->foreignIdFor(ProductSubCategory::class)->nullable()->constrained('product_categories')->cascadeOnDelete();
             $table->string('slug')->unique();        
-            $table->decimal('price', 20, 4)->default(0);           
+            $table->decimal('price', 20, 4)->default(0); 
+            $table->decimal('discount_price', 20, 4)->default(0); // Price after discount
+            $table->decimal('discount_percentage', 5, 2)->default(0); // Percentage of discount  
+            $table->boolean('is_new')->default(false); // New product flag
+            $table->boolean('is_featured')->default(false); // Featured product flag    
             $table->integer('stock_quantity')->default(0);
             $table->enum('stock_status',['active', 'inactive'])->default('active');
-            $table->string('description')->nullable();           
+            $table->text('description')->nullable(); 
+            $table->text('features')->nullable();          
             $table->timestamps();
         });
     }
