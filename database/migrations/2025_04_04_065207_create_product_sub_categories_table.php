@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name'); // e.g., "T-shirts", "Bottoms", "Jackets"
             $table->string('slug')->unique(); // e.g., "t-shirts", "bottoms", "jackets"
             $table->text('description')->nullable(); // Description of the sub-category
-            $table->array('image')->nullable(); // Image URL or path for the sub-category
+            $table->json('image')->nullable(); // Image URL or path for the sub-category
             $table->timestamps();
         });
     }
