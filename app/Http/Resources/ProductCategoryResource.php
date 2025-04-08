@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class BlogCategoryResource extends JsonResource
+class ProductCategoryResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,10 +17,12 @@ class BlogCategoryResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'blogs' => BlogResource::collection($this->whenLoaded('blogs')),
+            'slug' => $this->slug,
+            'description' => $this->description,
+            'image' => $this->image,
+           // 'sub_categories' => ProductSubCategoryResource::collection($this->whenLoaded('subCategories')),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
-
         ];
     }
 }
