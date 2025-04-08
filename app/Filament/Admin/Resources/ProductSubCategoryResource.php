@@ -31,10 +31,10 @@ class ProductSubCategoryResource extends Resource
             ->schema([
                 Forms\Components\Select::make('product_category_id')
                     ->required()
-                    ->options(\App\Models\ProductCategory::all()->pluck('name', 'id'))
+                    ->relationship('productCategory', 'name')
                     ->label('Product Category')
-                    ->searchable(),                  
-                   
+                    ->searchable(),
+
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
@@ -50,7 +50,7 @@ class ProductSubCategoryResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('category.name')
+                Tables\Columns\TextColumn::make('productCategory.name')
                     ->label('Category')
                     ->searchable()
                     ->sortable(),

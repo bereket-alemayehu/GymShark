@@ -20,9 +20,10 @@ class ProductSubCategoryResource extends JsonResource
             'slug' => $this->slug,
             'description' => $this->description,
             'image' => $this->image,
-            'category' => new ProductCategoryResource($this->whenLoaded('category')),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
+            'productCategory' => new ProductCategoryResource($this->whenLoaded('productCategory')),
+
         ];
     }
 }

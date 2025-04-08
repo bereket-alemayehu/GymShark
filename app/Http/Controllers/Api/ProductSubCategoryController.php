@@ -15,7 +15,7 @@ class ProductSubCategoryController extends Controller
      */
     public function index()
     {
-        $subcategories = ProductSubCategory::with('category')->get();
+        $subcategories = ProductSubCategory::with('productCategory')->get();
         return ProductSubCategoryResource::collection($subcategories);
     }
 
@@ -32,7 +32,7 @@ class ProductSubCategoryController extends Controller
      */
     public function show(string $id)
     {
-        $subcategory = ProductSubCategory::with('category')->findOrFail($id);
+        $subcategory = ProductSubCategory::with('productCategory')->findOrFail($id);
         return new ProductSubCategoryResource($subcategory);
     }
 
