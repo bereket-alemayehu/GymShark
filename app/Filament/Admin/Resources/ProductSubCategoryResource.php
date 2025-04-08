@@ -33,21 +33,12 @@ class ProductSubCategoryResource extends Resource
                     ->required()
                     ->options(\App\Models\ProductCategory::all()->pluck('name', 'id'))
                     ->label('Product Category')
-                    ->searchable()
-                    ->reactive()
-                    ->afterStateUpdated(function (callable $set, $state) {
-                        $category = \App\Models\ProductCategory::find($state);
-                        if ($category) {
-                            $set('slug', str($category->name)->slug());
-                        }
-                    }),
+                    ->searchable(),                  
+                   
                 Forms\Components\TextInput::make('name')
                     ->required()
-                    ->maxLength(255)
-                    ->columnSpanFull(),
-                // Forms\Components\TextInput::make('slug')
-                //     ->required()
-                //     ->maxLength(255),
+                    ->maxLength(255),
+
                 Forms\Components\MarkdownEditor::make('description')
                     ->columnSpanFull(),
                 Forms\Components\FileUpload::make('image')
@@ -60,7 +51,8 @@ class ProductSubCategoryResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('category.name')
-                    ->numeric()
+                    ->label('Category')
+                    ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
@@ -82,10 +74,8 @@ class ProductSubCategoryResource extends Resource
                 Tables\Actions\EditAction::make()
                     ->slideOver()
                     ->label('Edit'),
-                Tables\Actions\ViewAction::make()
-                    ->label('View')
-                    ->url(fn(ProductSubCategory $record): string => route('admin.product-sub-categories.show', $record->id))
-                    ->openUrlInNewTab(),
+                Tables\Actions\ViewAction::make(),
+
                 Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([

@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
+
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ProductSubCategoryResource;
+use App\Models\ProductSubCategory;
 use Illuminate\Http\Request;
 
 class ProductSubCategoryController extends Controller
@@ -12,7 +15,8 @@ class ProductSubCategoryController extends Controller
      */
     public function index()
     {
-        //
+        $subcategories = ProductSubCategory::with('category')->get();
+        return ProductSubCategoryResource::collection($subcategories);
     }
 
     /**
@@ -28,7 +32,8 @@ class ProductSubCategoryController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $subcategory = ProductSubCategory::with('category')->findOrFail($id);
+        return new ProductSubCategoryResource($subcategory);
     }
 
     /**
