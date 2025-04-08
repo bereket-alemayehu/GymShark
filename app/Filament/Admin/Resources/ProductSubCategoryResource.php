@@ -43,10 +43,11 @@ class ProductSubCategoryResource extends Resource
                     }),
                 Forms\Components\TextInput::make('name')
                     ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('slug')
-                    ->required()
-                    ->maxLength(255),
+                    ->maxLength(255)
+                    ->columnSpanFull(),
+                // Forms\Components\TextInput::make('slug')
+                //     ->required()
+                //     ->maxLength(255),
                 Forms\Components\MarkdownEditor::make('description')
                     ->columnSpanFull(),
                 Forms\Components\FileUpload::make('image')
