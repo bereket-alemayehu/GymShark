@@ -31,17 +31,25 @@ class ProductImagesResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Select::make('product_id')
-                    ->required()
-                    ->relationship('product', 'name'),
-                Forms\Components\Select::make('product_variant_id')
-                    ->relationship('productVariant', 'sku')
-                    ->required(),
-                Forms\Components\FileUpload::make('image_path')
-                    ->image()
+                    ->label('Product')
+                    ->relationship('product', 'name')
                     ->required(),
 
-                Forms\Components\Toggle::make('is_main')
+                Forms\Components\Select::make('product_variant_id')
+                    ->label('Variant SKU')
+                    ->relationship('productVariant', 'sku')
                     ->required(),
+
+                Forms\Components\FileUpload::make('image_path')
+                    ->image()
+                    ->directory('uploads/products') // storage/app/public/uploads/products
+                    ->required()
+                    ->columnSpanFull()
+                    ->label('Product Image')
+                    ->imageEditor(),                  
+
+                Forms\Components\Toggle::make('is_main')
+                    ->default(false),
             ]);
     }
 
@@ -52,13 +60,12 @@ class ProductImagesResource extends Resource
                 Tables\Columns\TextColumn::make('product.name')
                     ->sortable()
                     ->searchable(),
-                Tables\Columns\TextColumn::make('product_variant.sku')
+                Tables\Columns\TextColumn::make('productVariant.sku')
                     ->sortable(),
                 Tables\Columns\IconColumn::make('is_main')
                     ->boolean(),
-                Tables\Columns\IconColumn::make('is_main')
-                    ->boolean(),
-                Tables\Columns\ImageColumn::make('image_path'),
+                Tables\Columns\ImageColumn::make('image_path')
+                    ->circular(),
 
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()

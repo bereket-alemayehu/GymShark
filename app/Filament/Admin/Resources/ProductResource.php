@@ -46,7 +46,7 @@ class ProductResource extends Resource
                         ->default(0.0000)
                         ->prefix('$'),
                     Forms\Components\Toggle::make('is_active')
-                        ->default('false'),
+                        ->default(false),
                     Forms\Components\TextInput::make('discount_price')
                         ->numeric()
                         ->default(0.0000)
@@ -54,7 +54,7 @@ class ProductResource extends Resource
 
 
                     Forms\Components\Toggle::make('is_new')
-                        ->default('false'),
+                        ->default(false),
 
                 ])
                     ->columnSpanFull() // optional: layout in 2 columns
