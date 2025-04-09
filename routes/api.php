@@ -24,3 +24,5 @@ Route::apiResource('/blog-categories', \App\Http\Controllers\Api\BlogCategoryCon
 Route::apiResource('/product-categories', \App\Http\Controllers\Api\ProductCategoryController::class)->except(['update', 'destroy']);
 Route::apiResource('/product-sub-categories', \App\Http\Controllers\Api\ProductSubCategoryController::class)->except(['update', 'destroy']);
 Route::apiResource('/products', \App\Http\Controllers\Api\ProductController::class);
+Route::apiResource('/product-variants', \App\Http\Controllers\Api\ProductVariantController::class);
+//Route::apiResource('/product-images', \App\Http\Controllers\Api\ProductImagesController::class);

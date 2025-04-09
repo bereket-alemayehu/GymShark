@@ -32,8 +32,8 @@ class ProductSubCategoryResource extends Resource
                 Forms\Components\Select::make('product_category_id')
                     ->required()
                     ->relationship('productCategory', 'name')
-                    ->label('Product Category')
-                    ->searchable(),
+                    ->label('Product Category'),
+                    
 
                 Forms\Components\TextInput::make('name')
                     ->required()

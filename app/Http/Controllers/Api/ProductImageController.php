@@ -3,11 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\ProductResource;
-use App\Models\Product;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class ProductImageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +13,6 @@ class ProductController extends Controller
     public function index()
     {
         //
-        $products = Product::with(['variants', 'subcategory', 'images'])->get();
-        return ProductResource::collection($products);
     }
 
     /**
@@ -33,8 +29,6 @@ class ProductController extends Controller
     public function show(string $id)
     {
         //
-        $product = Product::with(['variants', 'subcategory', 'images'])->findOrFail($id);
-        return new ProductResource($product);
     }
 
     /**

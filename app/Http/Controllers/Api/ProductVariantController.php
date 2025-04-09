@@ -3,20 +3,21 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\ProductResource;
-use App\Models\Product;
+use App\Http\Resources\ProductVariantResource;
+use App\Models\ProductVariant;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class ProductVariantController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
-        $products = Product::with(['variants', 'subcategory', 'images'])->get();
-        return ProductResource::collection($products);
+        
+        $productVariants = ProductVariant::with(['product', 'product.subcategory', 'product.subcategory.productCategory'])->get();
+        return ProductVariantResource::collection($productVariants);
+        
     }
 
     /**
@@ -33,8 +34,8 @@ class ProductController extends Controller
     public function show(string $id)
     {
         //
-        $product = Product::with(['variants', 'subcategory', 'images'])->findOrFail($id);
-        return new ProductResource($product);
+        $productVariant = ProductVariant::with(['product', 'product.subcategory', 'product.subcategory.productCategory'])->findOrFail($id);
+        return new ProductVariantResource($productVariant);
     }
 
     /**

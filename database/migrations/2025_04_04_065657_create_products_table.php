@@ -16,15 +16,13 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignIdFor(ProductSubCategory::class)->nullable()->constrained('product_categories')->cascadeOnDelete();
+            $table->foreignIdFor(ProductSubCategory::class)->constrained()->cascadeOnDelete();
             $table->string('slug')->unique();        
             $table->decimal('price', 20, 4)->default(0); 
             $table->decimal('discount_price', 20, 4)->default(0); // Price after discount
             $table->decimal('discount_percentage', 5, 2)->default(0); // Percentage of discount  
             $table->boolean('is_new')->default(false); // New product flag
-            $table->boolean('is_featured')->default(false); // Featured product flag    
-            $table->integer('stock_quantity')->default(0);
-            $table->enum('stock_status',['active', 'inactive'])->default('active');
+            $table->boolean('is_active')->default(false); // Featured product flag    
             $table->text('description')->nullable(); 
             $table->text('features')->nullable();          
             $table->timestamps();

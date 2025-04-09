@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\ProductVariant;
+use App\Models\Product;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,8 +14,9 @@ return new class extends Migration
     {
         Schema::create('product_images', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(ProductVariant::class)->constrained()->cascadeOnDelete(); // Foreign Key to ProductVariant
-            $table->json('image_path'); // e.g. /storage/products/abc.jpg
+            $table->foreignIdFor(Product::class)->constrained()->cascadeOnDelete(); // Foreign Key to ProductVariant
+            $table->string('image_path'); // e.g. /storage/products/abc.jpg
+            $table->foreignId('product_variant_id')->nullable()->constrained()->onDelete('cascade'); // NEW
             $table->boolean('is_main')->default(false); // optional, for primary display            
             $table->timestamps();
         });

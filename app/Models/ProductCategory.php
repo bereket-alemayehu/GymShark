@@ -11,6 +11,11 @@ class ProductCategory extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
+    /**
+     * Get the subcategories associated with the product category.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function subcategories() {
         return $this->hasMany(ProductSubCategory::class);
     }
