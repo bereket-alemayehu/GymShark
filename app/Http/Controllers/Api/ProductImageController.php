@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ProductImageResource;
+use App\Models\ProductImages;
 use Illuminate\Http\Request;
 
 class ProductImageController extends Controller
@@ -12,7 +14,8 @@ class ProductImageController extends Controller
      */
     public function index()
     {
-        //
+        $productImage = ProductImages::with('product', 'product.subcategory', 'product.subcategory.productCategory', 'productVariant')->get();
+        return ProductImageResource::collection($productImage);
     }
 
     /**
@@ -28,7 +31,8 @@ class ProductImageController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $productImage = ProductImages::with('product', 'product.subcategory', 'product.subcategory.productCategory', 'productVariant')->findOrFail($id);
+        return new ProductImageResource($productImage);        
     }
 
     /**
