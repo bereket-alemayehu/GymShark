@@ -32,7 +32,7 @@ class ProductResource extends Resource
 
                 Select::make('product_sub_category_id')
                     ->label('Sub Category')
-                    ->relationship('subcategory', 'name')                    
+                    ->relationship('subcategory', 'name')
                     ->required(),
 
                 Forms\Components\TextInput::make('name')
@@ -106,7 +106,9 @@ class ProductResource extends Resource
                 //
             ])
             ->actions([
+                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

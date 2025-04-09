@@ -46,7 +46,7 @@ class ProductImagesResource extends Resource
                     ->required()
                     ->columnSpanFull()
                     ->label('Product Image')
-                    ->imageEditor(),                  
+                    ->imageEditor(),
 
                 Forms\Components\Toggle::make('is_main')
                     ->default(false),
@@ -80,7 +80,9 @@ class ProductImagesResource extends Resource
                 //
             ])
             ->actions([
+                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
