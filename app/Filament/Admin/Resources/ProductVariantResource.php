@@ -67,7 +67,8 @@ class ProductVariantResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('product.name')
-                    ->numeric()
+                    ->label('Product')
+                    ->searchable()
                     ->sortable(),
                 Tables\Columns\ColorColumn::make('color')
                     ->searchable(),

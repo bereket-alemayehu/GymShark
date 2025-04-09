@@ -18,20 +18,28 @@ class ProductImagesResource extends Resource
     protected static ?string $model = ProductImages::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationGroup = 'Product Management System';
+    protected static ?int $navigationSort = 6;
+    protected static ?string $label = 'Product Images';
+    protected static ?string $pluralLabel = 'Product Images';
+    protected static ?string $slug = 'product-images';
+    protected static ?string $navigationLabel = 'Product Images';
+
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('product_id')
+                Forms\Components\Select::make('product_id')
                     ->required()
-                    ->numeric(),
+                    ->relationship('product', 'name'),
+                Forms\Components\Select::make('product_variant_id')
+                    ->relationship('productVariant', 'sku')
+                    ->required(),
                 Forms\Components\FileUpload::make('image_path')
                     ->image()
                     ->required(),
-                Forms\Components\TextInput::make('product_variant_id')
-                    ->numeric()
-                    ->default(null),
+
                 Forms\Components\Toggle::make('is_main')
                     ->required(),
             ]);
@@ -41,15 +49,17 @@ class ProductImagesResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('product_id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\ImageColumn::make('image_path'),
-                Tables\Columns\TextColumn::make('product_variant_id')
-                    ->numeric()
+                Tables\Columns\TextColumn::make('product.name')
+                    ->sortable()
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('product_variant.sku')
                     ->sortable(),
                 Tables\Columns\IconColumn::make('is_main')
                     ->boolean(),
+                Tables\Columns\IconColumn::make('is_main')
+                    ->boolean(),
+                Tables\Columns\ImageColumn::make('image_path'),
+
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
