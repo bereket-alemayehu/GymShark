@@ -34,7 +34,7 @@ class ProductImageResource extends JsonResource
             ],
             'productVariant' => [
                 'id' => $this->productVariant->id,
-                'name' => $this->productVariant->name,
+                'sku' => $this->productVariant->sku,
                 
             ],
             'created_at' => $this->created_at,
