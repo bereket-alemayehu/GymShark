@@ -14,7 +14,7 @@ class ProductImageController extends Controller
      */
     public function index()
     {
-        $productImage = ProductImages::with('product', 'product.subcategory', 'product.subcategory.productCategory', 'productVariant')->get();
+        $productImage = ProductImages::with('productVariant.product', 'productVariant.product.subcategory', 'productVariant.product.subcategory.productCategory', 'productVariant')->get();
         return ProductImageResource::collection($productImage);
     }
 
@@ -31,7 +31,7 @@ class ProductImageController extends Controller
      */
     public function show(string $id)
     {
-        $productImage = ProductImages::with('product', 'product.subcategory', 'product.subcategory.productCategory', 'productVariant')->findOrFail($id);
+        $productImage = ProductImages::with('productVariant.product', 'productVariant.product.subcategory', 'productVariant.product.subcategory.productCategory', 'productVariant')->findOrFail($id);
         return new ProductImageResource($productImage);        
     }
 

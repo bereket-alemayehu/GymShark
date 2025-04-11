@@ -15,10 +15,14 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete(); // Foreign Key
-            $table->decimal('total_amount', 15, 3)->default(0);
-            $table->enum('status', ['pending', 'processing', 'completed', 'cancelled'])->default('pending');
-            $table->timestamps();
+            $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();            
+            $table->decimal('total_price', 10, 2);
+            $table->enum('status', ['pending', 'completed', 'cancelled'])->default('pending');
+            $table->enum('payment_status', ['paid', 'unpaid'])->default('unpaid');
+            $table->text('shipping_address');
+            $table->text('billing_address');
+            $table->string('shipping_method');
+            $table->string('payment_method');
         });
     }
 

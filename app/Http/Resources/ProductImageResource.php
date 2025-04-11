@@ -20,21 +20,22 @@ class ProductImageResource extends JsonResource
             'is_main' => $this->is_main,
             
             'product' => [
-                'id' => $this->product->id,
-                'name' => $this->product->name,
-                'slug' => $this->product->slug,
+                'id' => $this->productVariant->product->id,
+                'name' => $this->productVariant->product->name,
+                'slug' => $this->productVariant->product->slug,
             ],
             'productCategory' => [
-                'id' => $this->product->subcategory->productCategory->id,
-                'name' => $this->product->subcategory->productCategory->name,
+                'id' => $this->productVariant->product->subcategory->productCategory->id,
+                'name' => $this->productVariant->product->subcategory->productCategory->name,
             ],
             'subcategory' => [
-                'id' => $this->product->subcategory->id,
-                'name' => $this->product->subcategory->name,
+                'id' => $this->productVariant->product->subcategory->id,
+                'name' => $this->productVariant->product->subcategory->name,
             ],
             'productVariant' => [
                 'id' => $this->productVariant->id,
                 'sku' => $this->productVariant->sku,
+                'color' => $this->productVariant->color,
                 
             ],
             'created_at' => $this->created_at,
