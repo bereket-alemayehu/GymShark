@@ -16,8 +16,8 @@ class ProductCategory extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function subcategories() {
-        return $this->hasMany(ProductSubCategory::class);
+    public function products() {
+        return $this->hasMany(Product::class, 'product_category_id');
     }
     protected static function booted()
     {

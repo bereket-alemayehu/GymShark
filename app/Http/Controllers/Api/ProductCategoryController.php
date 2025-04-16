@@ -14,7 +14,7 @@ class ProductCategoryController extends Controller
      */
     public function index()
     {
-        $productCategories = ProductCategory::with('subCategories')->get();
+        $productCategories = ProductCategory::with('products')->get();
         return ProductCategoryResource::collection($productCategories);
     }
 
@@ -41,7 +41,7 @@ class ProductCategoryController extends Controller
      */
     public function show(string $id)
     {
-        $procuctCategory = ProductCategory::with('subCategories')->findOrFail($id);
+        $procuctCategory = ProductCategory::with('products')->findOrFail($id);
         return new ProductCategoryResource($procuctCategory);
     }
 

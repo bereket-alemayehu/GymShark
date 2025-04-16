@@ -30,9 +30,9 @@ class ProductResource extends Resource
         return $form
             ->schema([
 
-                Select::make('product_sub_category_id')
-                    ->label('Sub Category')
-                    ->relationship('subcategory', 'name')
+                Select::make('product_category_id')
+                    ->label(' Category')
+                    ->relationship('productCategory', 'name')
                     ->required(),
 
                 Forms\Components\TextInput::make('name')
@@ -60,7 +60,7 @@ class ProductResource extends Resource
                     ->columnSpanFull() // optional: layout in 2 columns
                     ->columns(4), // optional: layout in 3 columns
 
-                Forms\Components\MarkdownEditor::make('description')
+                Forms\Components\RichEditor::make('description')
                     ->columnSpanFull(),
 
                 Forms\Components\MarkdownEditor::make('features')
@@ -74,7 +74,7 @@ class ProductResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('product_sub_category.name')
+                Tables\Columns\TextColumn::make('productCategory.name')
                     ->label('Sub Category')
                     ->searchable()
                     ->sortable(),

@@ -21,7 +21,7 @@ class ProductCategoryResource extends JsonResource
             'slug' => $this->slug,
             'description' => $this->description,
             'image' => $this->image,
-            'sub_categories' => ProductSubCategoryResource::collection($this->whenLoaded('subCategories')),
+            'sub_categories' => ProductResource::collection($this->whenLoaded('products')),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

@@ -14,9 +14,17 @@ return new class extends Migration
     {
         Schema::create('product_categories', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
+   
             $table->string('slug')->unique();
-            $table->string('description')->nullable();
+            $table->foreignIdFor(ProductCategory::class)->constrained()->cascadeOnDelete(); // Link to categories like Men, Women, Kids
+            $table->string('name'); // e.g., "T-shirts", "Bottoms", "Jackets"
+            $table->string('meta_description')->nullable(); // Meta description for SEO
+            $table->string('title')->nullable(); // Meta keywords for SEO
+            $table->string('meta_title')->nullable(); // Meta title for SEO
+            // Unique code for the sub-category, e.g., "TSH", "BTM", "JCK"
+            $table->text('description')->nullable(); // Description of the sub-category
+            $table->string('image')->nullable(); // Image URL or path for the sub-category
+            $table->enum('type',['men','women','kids','accessories'])->default('men');
             $table->timestamps();
         });
     }

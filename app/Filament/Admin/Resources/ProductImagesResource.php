@@ -30,10 +30,6 @@ class ProductImagesResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('product_id')
-                    ->label('Product')
-                    ->relationship('product', 'name')
-                    ->required(),
 
                 Forms\Components\Select::make('product_variant_id')
                     ->label('Variant SKU')
@@ -42,7 +38,7 @@ class ProductImagesResource extends Resource
 
                 Forms\Components\FileUpload::make('image_path')
                     ->image()
-                    ->directory('uploads/products') // storage/app/public/uploads/products
+                    ->directory('products') // storage/app/public/uploads/products
                     ->required()
                     ->columnSpanFull()
                     ->label('Product Image')
@@ -57,9 +53,6 @@ class ProductImagesResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('product.name')
-                    ->sortable()
-                    ->searchable(),
                 Tables\Columns\TextColumn::make('productVariant.sku')
                     ->sortable(),
                 Tables\Columns\IconColumn::make('is_main')

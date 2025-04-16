@@ -10,16 +10,16 @@ class Product extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    public function subcategory()
+    public function productCategory()
     {
-        return $this->belongsTo(ProductSubcategory::class, 'product_sub_category_id');
+        return $this->belongsTo(ProductCategory::class, 'product_category_id');
     }
 
     public function variants()
     {
-        return $this->hasMany(ProductVariant::class);
+        return $this->hasMany(ProductVariant::class, 'product_id');
     }
-   
+
     protected static function booted()
     {
         static::saving(function ($category) {

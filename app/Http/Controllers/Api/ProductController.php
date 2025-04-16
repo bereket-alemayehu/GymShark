@@ -15,7 +15,7 @@ class ProductController extends Controller
     public function index()
     {
         //
-        $products = Product::with(['variants', 'subcategory', 'images'])->get();
+        $products = Product::with(['variants', 'productCategory', ])->get();
         return ProductResource::collection($products);
     }
 
@@ -33,7 +33,7 @@ class ProductController extends Controller
     public function show(string $id)
     {
         //
-        $product = Product::with(['variants', 'subcategory', 'images'])->findOrFail($id);
+        $product = Product::with(['variants', 'productCategory', ])->findOrFail($id);
         return new ProductResource($product);
     }
 
