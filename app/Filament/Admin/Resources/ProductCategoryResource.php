@@ -34,12 +34,41 @@ class ProductCategoryResource extends Resource
                     ->required()
                     ->maxLength(255)
                     ->columnSpanFull(),
-                // Forms\Components\TextInput::make('slug')
-                //     ->required()
-                //     ->maxLength(255),
+                Forms\Components\TextInput::make('title')
+                    ->label('Meta Title')
+                    ->required()
+                    ->maxLength(255)
+                    ->columnSpanFull(),
+                Forms\Components\TextInput::make('meta_title')
+                    ->label('Meta Title')
+                    ->required()
+                    ->maxLength(255)
+                    ->columnSpanFull(),
+                Forms\Components\Select::make('type')
+                    ->options([
+                        'men' => 'Men',
+                        'women' => 'Women',
+                        'kids' => 'Kids',
+                        'accessories' => 'Accessories'
+                    ]),
                 Forms\Components\MarkdownEditor::make('description')
                     ->columnSpanFull()
                     ->default(null),
+
+                Forms\Components\FileUpload::make('meta_description')
+                    ->label('Meta Description')
+                    ->required()
+                    ->maxSize(1024)
+                    ->acceptedFileTypes(['text/plain'])
+                    ->helperText('Upload a text file for meta description')
+                    ->columnSpanFull(),
+                Forms\Components\TextInput::make('image')
+                    ->label('Image URL')
+                    ->required()
+                    ->maxLength(255)
+                    ->columnSpanFull(),
+
+
             ]);
     }
 

@@ -18,10 +18,9 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->foreignIdFor(ProductCategory::class)->constrained()->cascadeOnDelete(); // Link to categories like Men, Women, Kids
             $table->string('name'); // e.g., "T-shirts", "Bottoms", "Jackets"
-            $table->string('meta_description')->nullable(); // Meta description for SEO
-            $table->string('title')->nullable(); // Meta keywords for SEO
-            $table->string('meta_title')->nullable(); // Meta title for SEO
-            // Unique code for the sub-category, e.g., "TSH", "BTM", "JCK"
+            $table->string('meta_description')->nullable(); 
+            $table->string('title')->nullable(); 
+            $table->string('meta_title')->nullable();       
             $table->text('description')->nullable(); // Description of the sub-category
             $table->string('image')->nullable(); // Image URL or path for the sub-category
             $table->enum('type',['men','women','kids','accessories'])->default('men');
