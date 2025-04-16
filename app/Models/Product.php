@@ -36,4 +36,11 @@ class Product extends Model
 
         return 0.00;
     }
+    protected $casts = [
+        'materials' => 'array',
+        'is_new' => 'boolean',
+        'is_active' => 'boolean',
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+    ];
 }

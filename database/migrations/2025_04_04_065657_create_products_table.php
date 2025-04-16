@@ -2,7 +2,6 @@
 
 use App\Models\Product;
 use App\Models\ProductCategory;
-use App\Models\ProductSubCategory;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -17,17 +16,35 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('title')->nullable(); // Meta keywords for SEO
-            $table->json('information')->nullable(); // Additional information about the product
+            $table->string('title')->nullable();
+            $table->text('information')->nullable();
+            $table->text('delivery_info')->nullable();
+            $table->text('size_fit')->nullable();
+            $table->json('materials')->nullable();
+            $table->string('made_in')->nullable();
+            $table->text('care')->nullable();
+            $table->string('detail_image')->nullable();
+            $table->string('thumbnail_image')->nullable();
+            $table->string('meta_title')->nullable();
+            $table->text('meta_description')->nullable();
+            $table->string('inner_title')->nullable();
+            $table->text('inner_description')->nullable();
+            $table->string('inner_subtitle')->nullable();
+            $table->text('inner_subdescription')->nullable();
+            $table->string('inner_image')->nullable();
+            $table->string('inner_base')->nullable();
+            $table->string('inner_basevalue')->nullable();
+            $table->string('inner_depth')->nullable();
+            $table->string('inner_depthvalue')->nullable();
             $table->foreignIdFor(ProductCategory::class)->constrained()->cascadeOnDelete();
-            $table->string('slug')->unique();        
-            $table->decimal('price', 20, 4)->default(0); 
+            $table->string('slug')->unique();
+            $table->decimal('price', 20, 4)->default(0);
             $table->decimal('discount_price', 20, 4)->default(0); // Price after discount
             $table->decimal('discount_percentage', 5, 2)->default(0); // Percentage of discount  
             $table->boolean('is_new')->default(false); // New product flag
             $table->boolean('is_active')->default(false); // Featured product flag    
-            $table->text('description')->nullable(); 
-            $table->text('features')->nullable(); 
+            $table->text('description')->nullable();
+            $table->text('features')->nullable();
 
             $table->timestamps();
         });

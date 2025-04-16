@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('size')->nullable();// Link to size (e.g., M)
             $table->string('sku')->unique(); // Stock keeping unit, unique for each variant
             $table->integer('stock_quantity')->default(0);
-            $table->decimal('price', 15, 2); // Price for this specific variant (could be different from base price)
+            $table->decimal('price', 15, 2)->default(0.00); // Price for this specific variant (could be different from base price)
             $table->timestamps();
         });
     }
