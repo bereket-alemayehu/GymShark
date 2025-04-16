@@ -34,7 +34,6 @@ class ProductResource extends Resource
                     ->label(' Category')
                     ->relationship('productCategory', 'name')
                     ->required(),
-
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
@@ -51,11 +50,8 @@ class ProductResource extends Resource
                         ->numeric()
                         ->default(0.0000)
                         ->prefix('$'),
-
-
                     Forms\Components\Toggle::make('is_new')
                         ->default(false),
-
                 ])
                     ->columnSpanFull() // optional: layout in 2 columns
                     ->columns(4), // optional: layout in 3 columns
@@ -63,8 +59,68 @@ class ProductResource extends Resource
                 Forms\Components\RichEditor::make('description')
                     ->columnSpanFull(),
 
-                Forms\Components\MarkdownEditor::make('features')
+                Forms\Components\RichEditor::make('features')
                     ->columnSpanFull(),
+                Forms\Components\TextInput::make('meta_title')
+                    ->maxLength(255),
+                Forms\Components\RichEditor::make('meta_description')
+                    ->maxLength(255)
+                    ->columnSpanFull(),
+                Forms\Components\RichEditor::make('information')
+                    ->columnSpanFull()
+                    ->maxLength(255),
+                Forms\Components\RichEditor::make('delivery_info')
+                    ->columnSpanFull(),
+                Forms\Components\RichEditor::make('size_fit')
+                    ->columnSpanFull(),
+                Forms\Components\RichEditor::make('care')
+                    ->columnSpanFull(),
+                Forms\Components\TextInput::make('made_in')
+                    ->maxLength(255),
+                Forms\Components\FileUpload::make('detail_image')
+                    ->label('Detail Image')
+                    ->image()
+                    ->disk('public')
+                    ->directory('products/detail_image')
+                    ->preserveFilenames()
+                    ->enableOpen()
+                    ->enableDownload()
+                    ->columnSpanFull(),
+                Forms\Components\FileUpload::make('thumbnail_image')
+                    ->label('Thumbnail Image')
+                    ->image()
+                    ->disk('public')
+                    ->directory('products/thumbnail_image')
+                    ->preserveFilenames()
+                    ->enableOpen()
+                    ->enableDownload()
+                    ->columnSpanFull(),
+                
+                Forms\Components\TextInput::make('inner_title')
+                    ->maxLength(255),
+                Forms\Components\RichEditor::make('inner_description')
+                    ->columnSpanFull(),
+                Forms\Components\TextInput::make('inner_subtitle')
+                    ->maxLength(255),
+                Forms\Components\RichEditor::make('inner_subdescription')
+                    ->columnSpanFull(),
+                Forms\Components\TextInput::make('inner_base')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('inner_basevalue')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('inner_depth')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('inner_depthvalue')
+                    ->maxLength(255),
+                Forms\Components\FileUpload::make('inner_image')
+                    ->label('Inner Image')
+                    ->image()
+                    ->disk('public')
+                    ->directory('products/inner_image')
+                    ->preserveFilenames()
+                    ->enableOpen()
+                    ->enableDownload()
+                    ->columnSpanFull(),                
             ]);
     }
 
