@@ -32,18 +32,15 @@ class ProductCategoryResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('name')
                     ->required()
-                    ->maxLength(255)
-                    ->columnSpanFull(),
+                    ->maxLength(255),
                 Forms\Components\TextInput::make('title')
                     ->label('Meta Title')
                     ->required()
-                    ->maxLength(255)
-                    ->columnSpanFull(),
+                    ->maxLength(255),
                 Forms\Components\TextInput::make('meta_title')
                     ->label('Meta Title')
                     ->required()
-                    ->maxLength(255)
-                    ->columnSpanFull(),
+                    ->maxLength(255),
                 Forms\Components\Select::make('type')
                     ->options([
                         'men' => 'Men',
@@ -51,22 +48,23 @@ class ProductCategoryResource extends Resource
                         'kids' => 'Kids',
                         'accessories' => 'Accessories'
                     ]),
-                Forms\Components\MarkdownEditor::make('description')
+
+
+                Forms\Components\RichEditor::make('meta_description')
+                    ->label('Meta Description')
+                    ->nullable()
+                    ->helperText('Upload a text file for meta description'),
+                Forms\Components\FileUpload::make('image')
+                    ->label('Image URL')
+                    ->nullable()
+                    ->image()
+                    ->imageEditor()
+                    ->disk('public')
+                    ->directory('product-category')
+                    ->helperText('Upload a text file for meta description'),
+                Forms\Components\RichEditor::make('description')
                     ->columnSpanFull()
                     ->default(null),
-
-                Forms\Components\FileUpload::make('meta_description')
-                    ->label('Meta Description')
-                    ->required()
-                    ->maxSize(1024)
-                    ->acceptedFileTypes(['text/plain'])
-                    ->helperText('Upload a text file for meta description')
-                    ->columnSpanFull(),
-                Forms\Components\TextInput::make('image')
-                    ->label('Image URL')
-                    ->required()
-                    ->maxLength(255)
-                    ->columnSpanFull(),
 
 
             ]);

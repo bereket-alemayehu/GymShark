@@ -25,7 +25,7 @@ class BlogController extends Controller
     public function show(string $id)
     {
         $blog = Blog::with('blogCategory')->findOrFail($id);
-        $relatedBlogs = Blog::where('blog_category_id', $blog->category_id)
+        $relatedBlogs = Blog::where('blog_category_id', $blog->blog_category_id)
             ->where('id', '!=', $blog->id)
             ->get();
         return (new BlogResource($blog))->additional([
