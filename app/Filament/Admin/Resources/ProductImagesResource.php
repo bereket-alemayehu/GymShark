@@ -40,6 +40,19 @@ class ProductImagesResource extends Resource
                     ->image()
                     ->directory('products') // storage/app/public/uploads/products
                     ->required()
+                    ->preserveFilenames()
+                    ->enableOpen()
+                    ->enableDownload()
+                    ->enableReordering()
+                    ->enableImagePreview()
+                    ->imagePreviewHeight('250')
+                    ->imagePreviewAspectRatio('1:1')
+                    ->imagePreviewWidth('250')
+                    ->multiple()
+                    ->maxFiles(8)
+                    ->minFiles(1)
+                    ->acceptedFileTypes(['image/*'])
+                    ->maxSize(1024 * 10) // 10MB
                     ->columnSpanFull()
                     ->label('Product Image')
                     ->imageEditor(),
@@ -58,7 +71,8 @@ class ProductImagesResource extends Resource
                 Tables\Columns\IconColumn::make('is_main')
                     ->boolean(),
                 Tables\Columns\ImageColumn::make('image_path')
-                    ->circular(),
+                    ->circular()
+                    ->label('Product Image'),
 
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
