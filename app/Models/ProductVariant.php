@@ -19,6 +19,12 @@ class ProductVariant extends Model
     public function cartItems() {
         return $this->hasMany(CartItem::class, 'product_variant_id');
     }
+    protected $casts = [
+        'size' => 'array',
+        'color' => 'array',       
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+    ];
     
     
     

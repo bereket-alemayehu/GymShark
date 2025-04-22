@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('product_images', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(ProductVariant::class)->constrained()->cascadeOnDelete(); // Foreign Key to ProductVariant
-            $table->string('image_path'); // e.g. /storage/products/abc.jpg
+            $table->json('image_path'); // e.g. /storage/products/abc.jpg
             $table->boolean('is_main')->default(false); // optional, for primary display            
             $table->timestamps();
         });

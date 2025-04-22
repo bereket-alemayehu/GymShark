@@ -14,5 +14,10 @@ class ProductImages extends Model
     {
         return $this->belongsTo(ProductVariant::class, 'product_variant_id');
     }
-
+    protected $casts = [
+        'image_path' => 'json',
+        'is_main' => 'boolean',
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+    ];
 }
