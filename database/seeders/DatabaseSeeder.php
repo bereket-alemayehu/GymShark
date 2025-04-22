@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
             'name' => 'Taye ',
             'last_name' => 'Animaw',
             'email' => 'admin@gmail.com',
+            'phone' => '0912345678',
+            'status' => 'active',
             'password' => bcrypt('password'),
             'role' => 'admin',
         ]);
@@ -25,6 +27,8 @@ class DatabaseSeeder extends Seeder
             'name' => 'User ',
             'last_name' => 'One',
             'email' => 'user@gmail.com',
+            'phone' => '0912345679',
+            'status' => 'active',
             'password' => bcrypt('password'),
             'role' => 'user',
         ]);

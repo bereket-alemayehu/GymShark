@@ -68,5 +68,5 @@ Route::middleware('auth:sanctum')->post('change-password', [AuthController::clas
 
 //route for reviews
 Route::middleware('auth:sanctum')->group(function () {
-    Route::apiResource('reviews', ReviewController::class);
+    Route::apiResource('/reviews', ReviewController::class);
 });

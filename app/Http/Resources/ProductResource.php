@@ -84,6 +84,22 @@ class ProductResource extends JsonResource
                     ];
                 });
             }),
+            'reviews' => $this->reviews->map(function ($review) {
+                return [
+                    'id' => $review->id,
+                    'rating' => $review->rating,
+                    'created_at' => $review->created_at,
+                    'updated_at' => $review->updated_at,
+                    'user' => [
+                        'id' => $review->user->id,
+                        'name' => $review->user->name,
+
+                    ],
+                ];
+            }),
+            'average_rating' => $this->reviews->avg('rating'),
+            'reviews_count' => $this->reviews->count(),
+            
         ];
     }
 }
