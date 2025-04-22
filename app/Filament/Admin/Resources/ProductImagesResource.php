@@ -43,11 +43,8 @@ class ProductImagesResource extends Resource
                     ->preserveFilenames()
                     ->enableOpen()
                     ->enableDownload()
-                    ->enableReordering()
-                    ->enableImagePreview()
-                    ->imagePreviewHeight('250')
-                    ->imagePreviewAspectRatio('1:1')
-                    ->imagePreviewWidth('250')
+                    ->enableReordering()                    
+                    
                     ->multiple()
                     ->maxFiles(8)
                     ->minFiles(1)

@@ -179,6 +179,8 @@ class ProductVariantResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('product.price')
                     ->money()
+                    ->sortable()
+                    ->label('Price')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()

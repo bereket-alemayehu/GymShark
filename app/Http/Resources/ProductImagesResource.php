@@ -16,14 +16,15 @@ class ProductImagesResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'image' => $this->image,
-            
+            'image_path' => $this->image_path,
+            'is_main' => $this->is_main,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
             'product_variant' => [
                 'id' => $this->productVariant->id,
-                'name' => $this->productVariant->name,
-                'price' => $this->productVariant->price,
+                'product_id' => $this->productVariant->product_id,
+                'name' => $this->productVariant->product->name,
+                'price' => $this->productVariant->product->price,
                 'color' => $this->productVariant->color,
                 'size' => $this->productVariant->size,
                 'stock_quantity' => $this->productVariant->stock_quantity,
