@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
    
             $table->string('slug')->unique();
-            $table->foreignIdFor(ProductCategory::class)->constrained()->cascadeOnDelete(); // Link to categories like Men, Women, Kids
+           // $table->foreignIdFor(ProductCategory::class)->constrained()->cascadeOnDelete(); // Link to categories like Men, Women, Kids
             $table->string('name'); // e.g., "T-shirts", "Bottoms", "Jackets"
             $table->string('meta_description')->nullable(); 
             $table->string('title')->nullable(); 

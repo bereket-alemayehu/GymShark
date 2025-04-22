@@ -34,7 +34,7 @@ class ProductCategoryResource extends Resource
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('title')
-                    ->label('Meta Title')
+                    ->label('Title')
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('meta_title')
@@ -48,12 +48,6 @@ class ProductCategoryResource extends Resource
                         'kids' => 'Kids',
                         'accessories' => 'Accessories'
                     ]),
-
-
-                Forms\Components\RichEditor::make('meta_description')
-                    ->label('Meta Description')
-                    ->nullable()
-                    ->helperText('Upload a text file for meta description'),
                 Forms\Components\FileUpload::make('image')
                     ->label('Image URL')
                     ->nullable()
@@ -61,10 +55,21 @@ class ProductCategoryResource extends Resource
                     ->imageEditor()
                     ->disk('public')
                     ->directory('product-category')
-                    ->helperText('Upload a text file for meta description'),
+                    ->helperText('Upload a text file for meta description')
+                    ->columnSpanFull(),
+
+
+                Forms\Components\RichEditor::make('meta_description')
+                    ->label('Meta Description')
+                    ->nullable()
+                    ->helperText('Upload a text file for meta description')
+                    ->columnSpanFull(),
+
                 Forms\Components\RichEditor::make('description')
                     ->columnSpanFull()
-                    ->default(null),
+                    ->default(null)
+                    ->columnSpanFull()
+                    ->helperText('Upload a text file for description'),
 
 
             ]);
