@@ -19,6 +19,10 @@ class Product extends Model
     {
         return $this->hasMany(ProductVariant::class, 'product_id');
     }
+    public function reviews()
+    {
+        return $this->hasMany(Review::class, 'product_id');
+    }
 
     protected static function booted()
     {
@@ -43,4 +47,5 @@ class Product extends Model
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
+
 }

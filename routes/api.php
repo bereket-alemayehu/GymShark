@@ -65,3 +65,10 @@ Route::post('/profile/update-avatar', [ProfileController::class, 'updateAvatar']
 Route::post('/forgot-password', [AuthController::class, 'forgotPassword']);
 Route::post('/reset-password', [AuthController::class, 'resetPassword']);
 Route::middleware('auth:sanctum')->post('change-password', [AuthController::class, 'changePassword']);
+
+//route for reviews
+use App\Http\Controllers\Api\ReviewController;
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::apiResource('reviews', ReviewController::class);
+});

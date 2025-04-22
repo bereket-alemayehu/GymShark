@@ -75,8 +75,8 @@ class ProductResource extends JsonResource
                 return $variant->images->map(function ($image) use ($variant) {
                     return [
                         'id' => $image->id,
-                        'image' => $image->image,
-                        'is_featured' => $image->is_featured,
+                        'image_path' => $image->image_path,
+                        'is_main' => $image->is_main,
                         'created_at' => $image->created_at,
                         'updated_at' => $image->updated_at,
                         'product_id' => $variant->product_id,

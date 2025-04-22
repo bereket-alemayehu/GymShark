@@ -17,9 +17,10 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Product::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
-            $table->integer('rating')->default(0);            
+            $table->unique(['product_id', 'user_id']);
+            $table->integer('rating')->default(0);
             $table->text('comment')->nullable();
-            $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');            
+            $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
             $table->timestamps();
         });
     }
