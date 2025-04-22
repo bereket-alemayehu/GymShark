@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\BlogController;
 use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\CartItemController;
 use App\Http\Controllers\Api\ProfileController;
+use App\Http\Controllers\Api\ReviewController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -26,7 +27,6 @@ Route::apiResource('/blogs', BlogController::class);
 Route::get('/blog-categories', [\App\Http\Controllers\Api\BlogCategoryController::class, 'index']);
 Route::apiResource('/blog-categories', \App\Http\Controllers\Api\BlogCategoryController::class);
 Route::apiResource('/product-categories', \App\Http\Controllers\Api\ProductCategoryController::class)->except(['update', 'destroy']);
-Route::apiResource('/product-sub-categories', \App\Http\Controllers\Api\ProductSubCategoryController::class)->except(['update', 'destroy']);
 Route::apiResource('/products', \App\Http\Controllers\Api\ProductController::class);
 Route::apiResource('/product-variants', \App\Http\Controllers\Api\ProductVariantController::class);
 Route::apiResource('/product-images', \App\Http\Controllers\Api\ProductImageController::class);
@@ -67,8 +67,6 @@ Route::post('/reset-password', [AuthController::class, 'resetPassword']);
 Route::middleware('auth:sanctum')->post('change-password', [AuthController::class, 'changePassword']);
 
 //route for reviews
-use App\Http\Controllers\Api\ReviewController;
-
 Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('reviews', ReviewController::class);
 });
