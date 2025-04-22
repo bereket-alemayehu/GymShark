@@ -35,7 +35,7 @@ class ProductVariantResource extends Resource
                     ->label('Product'),
 
                 // Multi-select for colors (using Color Picker or predefined options)
-                Forms\Components\Select::make('colors')
+                Forms\Components\Select::make('color')
                     ->label('Colors')
                     ->multiple()  // Allow multiple selections
                     ->options([
@@ -60,7 +60,6 @@ class ProductVariantResource extends Resource
                         'beige' => 'Beige',
                         'lavender' => 'Lavender',
                         'peach' => 'Peach',
-
                         'coral' => 'Coral',
                         'salmon' => 'Salmon',
                         'turquoise' => 'Turquoise',
@@ -117,7 +116,7 @@ class ProductVariantResource extends Resource
                     ->default([]), // Default to an empty array
 
                 // Multi-select for sizes
-                Forms\Components\Select::make('sizes')
+                Forms\Components\Select::make('size')
                     ->label('Sizes')
                     ->multiple()  // Allow multiple selections
                     ->options([
@@ -154,20 +153,20 @@ class ProductVariantResource extends Resource
                     ->sortable(),
 
                 // Display the colors as a comma-separated string
-                Tables\Columns\TextColumn::make('colors')
+                Tables\Columns\TextColumn::make('color')
                     ->label('Colors')
                     ->getStateUsing(function ($record) {
                         // Ensure colors is an array, then convert it to a comma-separated string
-                        return is_array($record->colors) ? implode(', ', $record->colors) : $record->colors;
+                        return is_array($record->color) ? implode(', ', $record->color) : $record->color;
                     })
                     ->searchable(),
 
                 // Display the sizes as a comma-separated string
-                Tables\Columns\TextColumn::make('sizes')
+                Tables\Columns\TextColumn::make('size')
                     ->label('Sizes')
                     ->getStateUsing(function ($record) {
                         // Ensure sizes is an array, then convert it to a comma-separated string
-                        return is_array($record->sizes) ? implode(', ', $record->sizes) : $record->sizes;
+                        return is_array($record->size) ? implode(', ', $record->size) : $record->size;
                     })
                     ->searchable(),
 

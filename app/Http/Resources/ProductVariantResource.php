@@ -17,9 +17,8 @@ class ProductVariantResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'price' => $this->price,
-            'color' => $this->color,
             'size' => $this->size,
+            'color' => $this->color,
             'stock-quantity' => $this->stock_quantity,
             'sku' => $this->sku,
             'created_at' => $this->created_at,
@@ -33,7 +32,7 @@ class ProductVariantResource extends JsonResource
                 'id' => $this->product->subcategory->productCategory->id,
                 'name' => $this->product->subcategory->productCategory->name,
             ],
-            
+
             'productImages' => ProductImagesResource::collection($this->whenLoaded('images')),
 
         ];
