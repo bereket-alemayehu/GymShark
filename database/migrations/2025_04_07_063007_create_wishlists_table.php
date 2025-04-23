@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Foreign Key
             $table->foreignId('product_id')->constrained()->onDelete('cascade'); // Foreign Key
-             // Optional, for storing user IDs or emails with whom the wishlist is shared
+            $table->unique(['user_id', 'product_id']); // Prevent duplicate entries
+            // Optional, for storing user IDs or emails with whom the wishlist is shared
+            $table->string('shared_with')->nullable(); // For storing user IDs or emails with whom the wishlist is shared
             $table->timestamps();
         });
     }

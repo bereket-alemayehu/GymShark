@@ -72,5 +72,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('/reviews', ReviewController::class);
 });
 Route::middleware('auth:sanctum')->group(function () {
-    Route::apiResource('/wishlists', [WishlistController::class, 'index']);
+    Route::apiResource('/wishlists', WishlistController::class);
 });
