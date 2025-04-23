@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\CartItemController;
 use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\ReviewController;
+use App\Http\Controllers\Api\WishlistController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -69,4 +70,7 @@ Route::middleware('auth:sanctum')->post('change-password', [AuthController::clas
 //route for reviews
 Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('/reviews', ReviewController::class);
+});
+Route::middleware('auth:sanctum')->group(function () {
+    Route::apiResource('/wishlists', [WishlistController::class, 'index']);
 });
