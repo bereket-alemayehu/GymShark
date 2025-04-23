@@ -23,6 +23,10 @@ class Product extends Model
     {
         return $this->hasMany(Review::class, 'product_id');
     }
+    public function wishlists()
+    {
+        return $this->hasMany(Wishlist::class, 'product_id');
+    }
 
     protected static function booted()
     {
@@ -47,5 +51,4 @@ class Product extends Model
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
-
 }
