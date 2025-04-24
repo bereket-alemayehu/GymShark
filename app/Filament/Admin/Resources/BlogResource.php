@@ -30,6 +30,10 @@ class BlogResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-clipboard-document-check';
     protected static ?string $navigationGroup = 'Post Management System';
     protected static ?int $navigationSort = 2;
+    public static function getNavigationBadge(): ?string
+    {
+        return Blog::count();
+    }
 
     public static function form(Form $form): Form
     {
