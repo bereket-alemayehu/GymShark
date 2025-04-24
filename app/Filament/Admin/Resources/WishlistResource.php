@@ -62,7 +62,7 @@ class WishlistResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('user.name')->label('User'),
-                Tables\Columns\TextColumn::make('product.name')->label('Product'),
+                Tables\Columns\TextColumn::make('product.name')->label('Product'),                                
                 Tables\Columns\TextColumn::make('created_at')->dateTime(),
                 //
             ])
