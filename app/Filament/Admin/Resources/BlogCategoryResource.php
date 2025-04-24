@@ -22,7 +22,11 @@ class BlogCategoryResource extends Resource
     protected static ?string $model = BlogCategory::class;
     protected static ?string $navigationIcon = 'heroicon-o-wallet';
     protected static ?string $navigationGroup = 'Post Management System';
-    protected static ?int $navigationSort = 1;
+    protected static ?int $navigationSort = 1; public static function getNavigationBadge(): ?string
+    {
+        return BlogCategory::count();
+    }
+
     public static function form(Form $form): Form
     {
         return $form
