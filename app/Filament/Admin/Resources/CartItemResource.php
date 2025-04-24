@@ -25,6 +25,10 @@ class CartItemResource extends Resource
     protected static ?string $pluralLabel = 'Cart Items';
     protected static ?string $slug = 'cart-items';
     protected static ?string $recordTitleAttribute = 'cart_id';
+    public static function getNavigationBadge(): ?string
+    {
+        return CartItem::count();
+    }
 
     public static function form(Form $form): Form
     {

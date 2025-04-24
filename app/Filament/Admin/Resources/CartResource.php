@@ -24,6 +24,10 @@ class CartResource extends Resource
     protected static ?string $label = 'Cart';
     protected static ?string $pluralLabel = 'Carts';
     protected static ?string $slug = 'carts';
+    public static function getNavigationBadge(): ?string
+    {
+        return Cart::count();
+    }
 
     public static function form(Form $form): Form
     {
