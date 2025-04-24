@@ -52,6 +52,10 @@ class ProductResource extends JsonResource
             'productCategory' => [
                 'id' => $this->productCategory->id,
                 'name' => $this->productCategory->name,
+                'type' => $this->productCategory->type,
+                'title' => $this->productCategory->title,
+                'description' => $this->productCategory->description,
+                'image' => $this->productCategory->image,
                 'slug' => $this->productCategory->slug,
                 'meta_title' => $this->productCategory->meta_title,
                 'meta_description' => $this->productCategory->meta_description,
@@ -99,7 +103,7 @@ class ProductResource extends JsonResource
             }),
             'average_rating' => $this->reviews->avg('rating'),
             'reviews_count' => $this->reviews->count(),
-            
+
         ];
     }
 }
