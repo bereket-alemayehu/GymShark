@@ -26,6 +26,12 @@ class ProductResource extends Resource
     protected static ?int $navigationSort = 3;
     protected static ?string $label = 'Product';
     protected static ?string $pluralLabel = 'Products';
+    protected static ?string $slug = 'products';
+    protected static ?string $navigationLabel = 'Products';
+    public static function getNavigationBadge(): ?string
+    {
+        return Product::count();
+    }
 
     public static function form(Form $form): Form
     {

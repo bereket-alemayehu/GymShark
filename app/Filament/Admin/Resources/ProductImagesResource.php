@@ -24,6 +24,10 @@ class ProductImagesResource extends Resource
     protected static ?string $pluralLabel = 'Product Images';
     protected static ?string $slug = 'product-images';
     protected static ?string $navigationLabel = 'Product Images';
+    public static function getNavigationBadge(): ?string
+    {
+        return ProductImages::count();
+    }
 
 
     public static function form(Form $form): Form

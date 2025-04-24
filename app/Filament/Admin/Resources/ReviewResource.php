@@ -18,6 +18,16 @@ class ReviewResource extends Resource
     protected static ?string $model = Review::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationGroup = 'Product Management System';
+    protected static ?int $navigationSort = 5;
+    protected static ?string $label = 'Review';
+    protected static ?string $pluralLabel = 'Reviews';
+    protected static ?string $slug = 'reviews';
+    protected static ?string $navigationLabel = 'Reviews';
+    public static function getNavigationBadge(): ?string
+    {
+        return Review::count();
+    }
 
     public static function form(Form $form): Form
     {

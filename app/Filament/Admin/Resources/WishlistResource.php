@@ -18,6 +18,29 @@ class WishlistResource extends Resource
     protected static ?string $model = Wishlist::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationGroup = 'Wishlist Management';
+    protected static ?int $navigationSort = 4;
+    protected static ?string $navigationLabel = 'Wishlists';
+    protected static ?string $label = 'Wishlist';
+    protected static ?string $pluralLabel = 'Wishlists';
+    protected static ?string $slug = 'wishlists';
+    protected static ?string $recordTitleAttribute = 'user_id';
+    public static function getNavigationBadge(): ?string
+    {
+        return Wishlist::count();
+    }
+    public static function getGloballySearchableAttributes(): array
+    {
+        return ['user_id', 'product_id'];
+    }
+    public static function getEagerLoadRelations(): array
+    {
+        return ['user', 'product'];
+    }
+    public static function getGlobalSearchResultTitle($record): string
+    {
+        return $record->user->name . ' - ' . $record->product->name;
+    }
 
     public static function form(Form $form): Form
     {

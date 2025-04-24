@@ -24,6 +24,10 @@ class ProductVariantResource extends Resource
     protected static ?string $pluralLabel = 'Product Variants';
     protected static ?string $slug = 'product-variants';
     protected static ?string $navigationLabel = 'Product Variants';
+    public static function getNavigationBadge(): ?string
+    {
+        return ProductVariant::count();
+    }
 
     public static function form(Form $form): Form
     {

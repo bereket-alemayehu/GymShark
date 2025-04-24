@@ -25,6 +25,10 @@ class ProductCategoryResource extends Resource
     protected static ?string $pluralLabel = 'Product Categories';
     protected static ?string $slug = 'product-categories';
     protected static ?string $navigationLabel = 'Product Categories';
+    public static function getNavigationBadge(): ?string
+    {
+        return ProductCategory::count();
+    }
 
     public static function form(Form $form): Form
     {
