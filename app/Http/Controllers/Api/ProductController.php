@@ -15,7 +15,7 @@ class ProductController extends Controller
     public function index()
     {
         //
-        $products = Product::with(['variants', 'productCategory', ])->get();
+        $products = Product::with(['variants', 'productCategory',])->get();
         return ProductResource::collection($products);
     }
 
@@ -30,10 +30,9 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $slug)
     {
-        //
-        $product = Product::with(['variants', 'productCategory', ])->findOrFail($id);
+        $product = Product::with(['variants', 'productCategory',])->where('slug', $slug)->firstOrFail();
         return new ProductResource($product);
     }
 

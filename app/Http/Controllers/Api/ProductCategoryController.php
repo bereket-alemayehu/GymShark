@@ -39,11 +39,12 @@ class ProductCategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $slug)
     {
-        $procuctCategory = ProductCategory::with('products')->findOrFail($id);
-        return new ProductCategoryResource($procuctCategory);
+        $productCategory = ProductCategory::with('products')->where('slug', $slug)->firstOrFail();
+        return new ProductCategoryResource($productCategory);
     }
+    
 
     /**
      * Update the specified resource in storage.
