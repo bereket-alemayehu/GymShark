@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\CartItemController;
 use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\ReviewController;
 use App\Http\Controllers\Api\WishlistController;
+use App\Http\Controllers\ContactUsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -74,3 +75,5 @@ Route::middleware('auth:sanctum')->group(function () {
 Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('/wishlists', WishlistController::class);
 });
+//contact us
+Route::apiResource('/contact-us', ContactUsController::class)->only(['index', 'store']);
