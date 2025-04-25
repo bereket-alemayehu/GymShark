@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('meta_description')->nullable();       
             $table->text('description')->nullable(); // Description of the sub-category
             $table->string('image')->nullable(); // Image URL or path for the sub-category
+            $table->string('banner')->nullable(); // Banner URL or path for the sub-category
             $table->enum('type',['men','women','kids','accessories'])->default('men');
             $table->timestamps();
         });

@@ -25,6 +25,7 @@ class ProductCategoryResource extends JsonResource
             'meta_description' => $this->meta_description,
             'description' => $this->description,
             'image' => $this->image,
+            'banner' => $this->banner,
             'Product' => ProductResource::collection($this->whenLoaded('products')),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
