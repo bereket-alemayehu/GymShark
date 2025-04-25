@@ -16,6 +16,11 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\Tabs\Tab;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Textarea;
+
 
 class ProductResource extends Resource
 {
@@ -94,9 +99,32 @@ class ProductResource extends Resource
                     ->schema([
                         Forms\Components\RichEditor::make('information')
                             ->maxLength(255),
-                        Forms\Components\RichEditor::make('delivery_info'),
                         Forms\Components\RichEditor::make('size_fit'),
+                        Forms\Components\RichEditor::make('delivery_info'),
                         Forms\Components\RichEditor::make('care'),
+                        // Forms\Components\TagsInput::make('materials')
+                        //     ->label('Materials')
+                        //     ->placeholder('Add materials...')
+                        //     ->label('Materials')
+                        //     ->helperText('Enter materials separated by commas')
+                        //     ->disableLabel(),
+
+                        Repeater::make('materials')
+                            ->label('Materials')
+                            ->schema([
+                                TextInput::make('title')
+                                    ->required()
+                                    ->label('Material Title'),
+
+                                Textarea::make('description')
+                                    ->label('Material Description')
+                                    ->rows(3),
+                            ])
+                            ->addActionLabel('Add Material')
+                            ->reorderable() // Optional: allows drag/drop reordering
+                            ->collapsible() // Optional: collapses each item
+                            ->grid(2) // Optional: put title and description side-by-side
+                            ->columnSpanFull(),
 
                     ]),
 
@@ -132,12 +160,7 @@ class ProductResource extends Resource
                                 Forms\Components\TextInput::make('inner_subtitle')
                                     ->maxLength(255),
                             ]),
-                        Forms\Components\TagsInput::make('materials')
-                            ->label('Materials')
-                            ->placeholder('Add materials...')
-                            ->label('Materials')
-                            ->helperText('Enter materials separated by commas')
-                            ->disableLabel(),
+
                         Forms\Components\RichEditor::make('inner_description'),
                         Forms\Components\RichEditor::make('inner_subdescription'),
                         Grid::make(2)
@@ -171,6 +194,10 @@ class ProductResource extends Resource
                                     ->helperText('Enter the country of origin')
                                     ->disableLabel()
                                     ->default('Made in Ethiopia'),
+                                Forms\Components\TextInput::make('inner_baseunit')
+                                    ->nullable(),
+
+
                             ]),
                     ]),
             ]);
@@ -183,11 +210,9 @@ class ProductResource extends Resource
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('productCategory.name')
-                    ->label('Sub Category')
+                    ->label('Category')
                     ->searchable()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('slug')
-                    ->searchable(),
+                    ->sortable(),                
                 Tables\Columns\TextColumn::make('price')
                     ->money()
                     ->sortable(),
@@ -200,6 +225,8 @@ class ProductResource extends Resource
                 Tables\Columns\IconColumn::make('is_new')
                     ->boolean(),
                 Tables\Columns\IconColumn::make('is_active')
+                    ->boolean(),
+                Tables\Columns\IconColumn::make('is_popular')
                     ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()

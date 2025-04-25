@@ -33,6 +33,7 @@ return new class extends Migration
             $table->text('inner_subdescription')->nullable();
             $table->string('inner_image')->nullable();
             $table->string('inner_base')->nullable();
+            $table->string('inner_baseunit')->nullable();
             $table->string('inner_basevalue')->nullable();
             $table->string('inner_depth')->nullable();
             $table->string('inner_depthvalue')->nullable();

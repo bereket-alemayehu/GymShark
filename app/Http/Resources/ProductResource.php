@@ -46,10 +46,9 @@ class ProductResource extends JsonResource
             'inner_basevalue' => $this->inner_basevalue,
             'inner_depth' => $this->inner_depth,
             'inner_depthvalue' => $this->inner_depthvalue,
-
+            'inner_baseunit' => $this->inner_baseunit,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
-
             'productCategory' => [
                 'id' => $this->productCategory->id,
                 'name' => $this->productCategory->name,
