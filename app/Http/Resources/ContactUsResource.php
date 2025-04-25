@@ -17,8 +17,7 @@ class ContactUsResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'email' => $this->email,
-            'subject' => $this->subject,
+            'email' => $this->email,            
             'phone' => $this->phone,
             'message' => $this->message,
             'created_at' => $this->created_at,
