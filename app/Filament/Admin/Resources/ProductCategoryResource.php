@@ -59,8 +59,16 @@ class ProductCategoryResource extends Resource
                     ->imageEditor()
                     ->disk('public')
                     ->directory('product-category')
-                    ->helperText('Upload a text file for meta description')
-                    ->columnSpanFull(),
+                    ->helperText('Upload a text file for meta description'),
+                Forms\Components\FileUpload::make('banner')
+                    ->label('Banner URL')
+                    ->nullable()
+                    ->image()
+                    ->imageEditor()
+                    ->disk('public')
+                    ->directory('product-category')
+                    ->helperText('Upload a text file for meta description'),
+                    
 
 
                 Forms\Components\RichEditor::make('meta_description')

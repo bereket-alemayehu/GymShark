@@ -67,6 +67,8 @@ class ProductResource extends Resource
                             ->default(false),
                         Forms\Components\Toggle::make('is_new')
                             ->default(false),
+                        Forms\Components\Toggle::make('is_popular')
+                            ->default(false),
                     ]),
 
                 Section::make('Descriptions')
