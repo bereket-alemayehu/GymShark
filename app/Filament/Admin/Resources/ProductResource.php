@@ -194,8 +194,10 @@ class ProductResource extends Resource
                                     ->helperText('Enter the country of origin')
                                     ->disableLabel()
                                     ->default('Made in Ethiopia'),
-                                Forms\Components\TextInput::make('inner_baseunit')
-                                    ->nullable(),
+                                Forms\Components\MarkdownEditor::make('inner_baseunit')
+                                    ->nullable()
+                                    ->columnSpanFull()
+                                    ->helperText('Enter the base unit of measurement'),
 
 
                             ]),
