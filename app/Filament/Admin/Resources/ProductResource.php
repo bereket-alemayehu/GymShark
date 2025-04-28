@@ -69,7 +69,7 @@ class ProductResource extends Resource
                             ->default(0.0000)
                             ->prefix('$'),
                         Forms\Components\Toggle::make('is_active')
-                            ->default(false),
+                            ->default(true),
                         Forms\Components\Toggle::make('is_new')
                             ->default(false),
                         Forms\Components\Toggle::make('is_popular')
@@ -214,7 +214,7 @@ class ProductResource extends Resource
                 Tables\Columns\TextColumn::make('productCategory.name')
                     ->label('Category')
                     ->searchable()
-                    ->sortable(),                
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('price')
                     ->money()
                     ->sortable(),

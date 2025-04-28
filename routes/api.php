@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\ReviewController;
 use App\Http\Controllers\Api\WishlistController;
 use App\Http\Controllers\ContactUsController;
+use App\Http\Controllers\PromotionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -78,3 +79,4 @@ Route::middleware('auth:sanctum')->group(function () {
 //contact us
 Route::apiResource('/contact-us', ContactUsController::class)->only(['index', 'store']);
 Route::apiResource('/subscribers', \App\Http\Controllers\Api\SubscriberController::class);
+Route::apiResource('/promotions', PromotionController::class);
