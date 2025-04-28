@@ -9,6 +9,7 @@ class CartItem extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
     public function cart()
     {
         return $this->belongsTo(Cart::class);
@@ -16,6 +17,11 @@ class CartItem extends Model
 
     public function productVariant()
     {
-        return $this->belongsTo(ProductVariant::class, 'product_variant_id');
+        return $this->belongsTo(ProductVariant::class);
+    }
+
+    public function getTotalPriceAttribute()
+    {
+        return $this->quantity * $this->productVariant->price;
     }
 }

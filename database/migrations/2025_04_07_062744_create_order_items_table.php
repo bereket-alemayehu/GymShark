@@ -16,8 +16,8 @@ return new class extends Migration
             $table->foreignId('order_id')->constrained()->onDelete('cascade'); // Foreign Key       
             $table->foreignId('product_variant_id')->nullable()->constrained()->onDelete('cascade');
             $table->unsignedInteger('quantity');
-            $table->decimal('price', 10, 2);            
-            $table->decimal('total_price', 10, 2);
+            $table->decimal('price', 10, 2)->default(0);            
+            $table->decimal('total_price', 10, 2)->default(0); // Total price for the item (price * quantity)
             $table->timestamps();
         });
     }
