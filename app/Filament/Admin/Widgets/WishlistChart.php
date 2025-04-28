@@ -32,8 +32,8 @@ class WishlistChart extends ChartWidget
                 [
                     'label' => 'Wishlist',
                     'data' => $data,
-                    'backgroundColor' => '#25a7d5',
-                    'borderColor' => '#25a7d5',
+                    'backgroundColor' => '#35A92B',
+                    'borderColor' => '#35A92B',
                     'borderWidth' => 1
                 ],
             ],
