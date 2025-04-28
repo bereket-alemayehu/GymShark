@@ -28,13 +28,29 @@ class WishlistController extends Controller
             'product_id' => 'required|exists:products,id',
         ]);
 
-        $wishlist = Wishlist::firstOrCreate([
+        // Check if the product already exists in the user's wishlist
+        $wishlist = Wishlist::where('user_id', Auth::id())
+            ->where('product_id', $request->product_id)
+            ->first();
+
+        if ($wishlist) {
+            return response()->json([
+                'message' => 'Product is already in your wishlist.',
+                'wishlist' => new WishlistResource($wishlist),
+            ], 200);
+        }
+
+        // If not, create it
+        $wishlist = Wishlist::create([
             'user_id' => Auth::id(),
             'product_id' => $request->product_id,
         ]);
 
-        return new WishlistResource($wishlist->load('product'));
-    }    
+        return response()->json([
+            'message' => 'Your product has been added to wishlist.',
+            'wishlist' => new WishlistResource($wishlist),
+        ], 201);
+    }
     public function destroy(string $id)
     {
         $wishlist = Wishlist::where('user_id', Auth::id())->where('id', $id)->firstOrFail();
