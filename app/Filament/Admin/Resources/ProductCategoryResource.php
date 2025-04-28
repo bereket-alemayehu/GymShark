@@ -95,10 +95,13 @@ class ProductCategoryResource extends Resource
                     ->searchable()
                     ->sortable()
                     ->limit(50),
-                Tables\Columns\TextColumn::make('slug')
+                Tables\Columns\TextColumn::make('title')
+                    ->limit(50)
                     ->searchable(),
-                // Tables\Columns\TextColumn::make('description')
-                //     ->searchable(),
+                Tables\Columns\TextColumn::make('type')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\ImageColumn::make('image') ,                   
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
