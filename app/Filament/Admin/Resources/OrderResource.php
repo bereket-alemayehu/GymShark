@@ -18,27 +18,23 @@ class OrderResource extends Resource
     protected static ?string $model = Order::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationGroup = 'Order payment & Cart Management';
+    protected static ?int $navigationSort = 2;
+    protected static ?string $navigationLabel = 'Orders';
+    protected static ?string $label = 'Order List';
+    protected static ?string $pluralLabel = 'Order Lists';
+    protected static ?string $title = 'Order';
+    protected static ?string $slug = 'orders';
+    public static function getNavigationBadge(): ?string
+    {
+        return Order::count();
+    }
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('user_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('total_price')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('payment_status')
-                    ->required()
-                    ->maxLength(255)
-                    ->default('pending'),
-                Forms\Components\TextInput::make('payment_reference')
-                    ->maxLength(255)
-                    ->default(null),
-                Forms\Components\TextInput::make('payment_method')
-                    ->required()
-                    ->maxLength(255),
+               
             ]);
     }
 
@@ -46,8 +42,9 @@ class OrderResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('user_id')
-                    ->numeric()
+                Tables\Columns\TextColumn::make('user.name')
+                    ->label('User')
+                    ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('total_price')
                     ->numeric()
@@ -63,7 +60,8 @@ class OrderResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\ViewAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

@@ -18,11 +18,12 @@ class CartResource extends Resource
     protected static ?string $model = Cart::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-shopping-cart';
-    protected static ?string $navigationGroup = 'Cart Management';
+    protected static ?string $navigationGroup = ' Order payment & Cart Management';
     protected static ?int $navigationSort = 2;
     protected static ?string $navigationLabel = 'Carts';
-    protected static ?string $label = 'Cart';
-    protected static ?string $pluralLabel = 'Carts';
+    protected static ?string $label = 'Cart List';
+    protected static ?string $pluralLabel = 'Cart Lists';
+    protected static ?string $title = 'Cart';
     protected static ?string $slug = 'carts';
     public static function getNavigationBadge(): ?string
     {
