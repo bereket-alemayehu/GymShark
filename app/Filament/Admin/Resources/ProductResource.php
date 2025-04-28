@@ -28,7 +28,7 @@ class ProductResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
     protected static ?string $navigationGroup = 'Product Management System';
-    protected static ?int $navigationSort = 3;
+    protected static ?int $navigationSort = 2;
     protected static ?string $label = 'Product';
     protected static ?string $pluralLabel = 'Products';
     protected static ?string $slug = 'products';

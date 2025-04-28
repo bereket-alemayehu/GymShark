@@ -17,9 +17,9 @@ class WishlistResource extends Resource
 {
     protected static ?string $model = Wishlist::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-    protected static ?string $navigationGroup = 'Wishlist Management';
-    protected static ?int $navigationSort = 4;
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';    
+    protected static ?string $navigationGroup = 'Product Management System';
+    protected static ?int $navigationSort = 6;
     protected static ?string $navigationLabel = 'Wishlists';
     protected static ?string $label = 'Wishlist';
     protected static ?string $pluralLabel = 'Wishlists';
@@ -49,7 +49,6 @@ class WishlistResource extends Resource
                 Forms\Components\Select::make('user_id')
                     ->relationship('user', 'name')
                     ->required(),
-
                 Forms\Components\Select::make('product_id')
                     ->relationship('product', 'name')
                     ->required(),
@@ -62,7 +61,7 @@ class WishlistResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('user.name')->label('User'),
-                Tables\Columns\TextColumn::make('product.name')->label('Product'),                                
+                Tables\Columns\TextColumn::make('product.name')->label('Product'),
                 Tables\Columns\TextColumn::make('created_at')->dateTime(),
                 //
             ])
@@ -70,6 +69,21 @@ class WishlistResource extends Resource
                 //
             ])
             ->actions([
+                Tables\Actions\ActionGroup::make([
+                    Tables\Actions\ViewAction::make()
+                        ->url(fn(Wishlist $record): string => route('filament.resources.wishlists.view', $record)),
+                    Tables\Actions\Action::make('Edit')
+                        ->url(fn(Wishlist $record): string => route('filament.resources.wishlists.edit', $record)),
+
+                    Tables\Actions\Action::make('Delete')
+                        ->action(function (Wishlist $record) {
+                            $record->delete();
+                            return redirect()->route('filament.resources.wishlists.index');
+                        })
+                        ->color('danger')
+                        ->icon('heroicon-o-trash'),
+
+                ]),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([

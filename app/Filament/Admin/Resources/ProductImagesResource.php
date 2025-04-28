@@ -19,7 +19,7 @@ class ProductImagesResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
     protected static ?string $navigationGroup = 'Product Management System';
-    protected static ?int $navigationSort = 6;
+    protected static ?int $navigationSort = 4;
     protected static ?string $label = 'Product Images';
     protected static ?string $pluralLabel = 'Product Images';
     protected static ?string $slug = 'product-images';

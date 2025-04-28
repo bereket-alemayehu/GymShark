@@ -77,3 +77,4 @@ Route::middleware('auth:sanctum')->group(function () {
 });
 //contact us
 Route::apiResource('/contact-us', ContactUsController::class)->only(['index', 'store']);
+Route::apiResource('/subscribers', \App\Http\Controllers\Api\SubscriberController::class);
