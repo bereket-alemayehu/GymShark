@@ -2,22 +2,23 @@
 
 namespace App\Filament\Admin\Resources;
 
-use App\Filament\Admin\Resources\WishlistResource\Pages;
-use App\Filament\Admin\Resources\WishlistResource\RelationManagers;
-use App\Models\Wishlist;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
+use Pages\ViewWishlist;
+use App\Models\Wishlist;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Filament\Resources\Resource;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Admin\Resources\WishlistResource\Pages;
+use App\Filament\Admin\Resources\WishlistResource\RelationManagers;
 
 class WishlistResource extends Resource
 {
     protected static ?string $model = Wishlist::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-heart';
     protected static ?string $navigationGroup = 'Product Management System';
     protected static ?int $navigationSort = 6;
     protected static ?string $navigationLabel = 'Wishlists';
