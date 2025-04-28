@@ -104,12 +104,6 @@ class ProductResource extends Resource
                         Forms\Components\RichEditor::make('size_fit'),
                         Forms\Components\RichEditor::make('delivery_info'),
                         Forms\Components\RichEditor::make('care'),
-                        // Forms\Components\TagsInput::make('materials')
-                        //     ->label('Materials')
-                        //     ->placeholder('Add materials...')
-                        //     ->label('Materials')
-                        //     ->helperText('Enter materials separated by commas')
-                        //     ->disableLabel(),
 
                         Repeater::make('materials')
                             ->label('Materials')
