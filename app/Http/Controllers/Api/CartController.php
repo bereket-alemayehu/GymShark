@@ -19,7 +19,6 @@ class CartController extends Controller
      */
     public function index()
     {
-        //
         $cart = Cart::where('user_id', Auth::id())->where('status', 'active')->first();
 
         if (!$cart) {
@@ -41,7 +40,7 @@ class CartController extends Controller
 
         $productVariant = ProductVariant::findOrFail($productVariantId);
 
-        // Get the user's active cart
+        // Get or create the user's active cart
         $cart = Cart::firstOrCreate(
             ['user_id' => Auth::id(), 'status' => 'active']
         );
@@ -71,24 +70,18 @@ class CartController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, $cartItemId)
     {
-        //
         $request->validate([
             'quantity' => 'required|integer|min:1',
         ]);
 
-        $cartItem = CartItem::findOrFail($cartItemId);
+        $cartItem = CartItem::where('id', $cartItemId)
+            ->where('cart_id', Auth::user()->cart->id) // Ensure the cart item belongs to the user's cart
+            ->firstOrFail();
+
         $cartItem->quantity = $request->quantity;
         $cartItem->total_price = $cartItem->quantity * $cartItem->price;
         $cartItem->save();
@@ -101,12 +94,18 @@ class CartController extends Controller
      */
     public function destroy($cartItemId)
     {
-        //
-        $cartItem = CartItem::findOrFail($cartItemId);
+        $cartItem = CartItem::where('id', $cartItemId)
+            ->where('cart_id', Auth::user()->cart->id) // Ensure the cart item belongs to the user's cart
+            ->firstOrFail();
+
         $cartItem->delete();
 
         return response()->json(['message' => 'Product removed from cart'], 200);
     }
+
+    /**
+     * Checkout the cart.
+     */
     public function checkout()
     {
         $cart = Cart::where('user_id', Auth::id())
@@ -126,6 +125,10 @@ class CartController extends Controller
 
         return response()->json(['message' => 'Checkout successful', 'order_id' => $order->id], 200);
     }
+
+    /**
+     * Create an order from the cart items.
+     */
     private function createOrderFromCart(Cart $cart)
     {
         // Create the order
@@ -134,10 +137,10 @@ class CartController extends Controller
             'total_price' => $cart->cartItems->sum('total_price'),
             'status' => 'pending',
             'payment_status' => 'unpaid',
-            'shipping_address' => 'User shipping address', // Update with actual data
-            'billing_address' => 'User billing address', // Update with actual data
-            'shipping_method' => 'Standard', // Update as needed
-            'payment_method' => 'Credit Card', // Update as needed
+            'shipping_address' => 'User shipping address', // Replace with actual user input data
+            'billing_address' => 'User billing address', // Replace with actual user input data
+            'shipping_method' => 'Standard', // Replace with actual method if needed
+            'payment_method' => 'Credit Card', // Replace with actual method if needed
         ]);
 
         // Create order items from cart items

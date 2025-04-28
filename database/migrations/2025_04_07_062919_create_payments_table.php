@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('order_id')->constrained()->onDelete('cascade'); // Foreign Key
-            $table->decimal('amount', 10, 2);
-            $table->enum('method', ['credit_card', 'paypal', 'bank_transfer']);
-            $table->enum('status', ['pending', 'completed', 'failed'])->default('pending');
+            $table->foreignId('order_id')->constrained()->cascadeOnDelete();
+            $table->string('payment_reference'); // Chapa transaction reference
+            $table->string('payment_status'); // Success, Failed, Pending
+            $table->decimal('amount', 20, 4);
             $table->timestamps();
         });
     }

@@ -28,7 +28,7 @@ class ProductResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
     protected static ?string $navigationGroup = 'Product Management System';
-    protected static ?int $navigationSort = 3;
+    protected static ?int $navigationSort = 2;
     protected static ?string $label = 'Product';
     protected static ?string $pluralLabel = 'Products';
     protected static ?string $slug = 'products';
@@ -71,7 +71,7 @@ class ProductResource extends Resource
                             ->default(0.0000)
                             ->prefix('$'),
                         Forms\Components\Toggle::make('is_active')
-                            ->default(false),
+                            ->default(true),
                         Forms\Components\Toggle::make('is_new')
                             ->default(false),
                         Forms\Components\Toggle::make('is_popular')

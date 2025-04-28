@@ -19,7 +19,7 @@ class ProductVariantResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
     protected static ?string $navigationGroup = 'Product Management System';
-    protected static ?int $navigationSort = 5;
+    protected static ?int $navigationSort = 3;
     protected static ?string $label = 'Product Variant';
     protected static ?string $pluralLabel = 'Product Variants';
     protected static ?string $slug = 'product-variants';

@@ -44,7 +44,7 @@ return new class extends Migration
             $table->decimal('discount_percentage', 5, 2)->default(0); // Percentage of discount  
             $table->boolean('is_new')->default(false); // New product flag
             $table->boolean('is_popular')->default(false); // Featured product flag
-            $table->boolean('is_active')->default(false); // Featured product flag    
+            $table->boolean('is_active')->default(true); // Featured product flag    
             $table->text('description')->nullable();
             $table->text('features')->nullable();
 

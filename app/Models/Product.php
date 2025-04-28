@@ -38,7 +38,7 @@ class Product extends Model
     }
     public function getDiscountPercentageAttribute(): float
     {
-        if ($this->price > 0 && $this->discount_price < $this->price) {
+        if ($this->price > 0 && $this->discount_price > 0 && $this->discount_price < $this->price) {
             return round((($this->price - $this->discount_price) / $this->price) * 100, 2);
         }
 
