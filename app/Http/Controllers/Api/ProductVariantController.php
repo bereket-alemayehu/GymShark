@@ -15,7 +15,7 @@ class ProductVariantController extends Controller
     public function index()
     {
         
-        $productVariants = ProductVariant::with(['product', 'product.subcategory', 'product.subcategory.productCategory'])->get();
+        $productVariants = ProductVariant::with(['product','product.productCategory'])->get();
         return ProductVariantResource::collection($productVariants);
         
     }
@@ -34,7 +34,7 @@ class ProductVariantController extends Controller
     public function show(string $id)
     {
         //
-        $productVariant = ProductVariant::with(['product', 'product.subcategory', 'product.subcategory.productCategory'])->findOrFail($id);
+        $productVariant = ProductVariant::with(['product', 'product.productCategory'])->findOrFail($id);
         return new ProductVariantResource($productVariant);
     }
 

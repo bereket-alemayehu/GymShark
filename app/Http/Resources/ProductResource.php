@@ -73,22 +73,23 @@ class ProductResource extends JsonResource
                     'sku' => $variant->sku,
                     'stock_quantity' => $variant->stock_quantity,
                     'price' => $variant->price,
+                    'images' => $variant->images->map(function ($image) use ($variant) {
+                        return [
+                            'id' => $image->id,
+                            'image_path' => $image->image_path,
+                            'is_main' => $image->is_main,
+                            'created_at' => $image->created_at,
+                            'updated_at' => $image->updated_at,
+                            'product_id' => $variant->product_id,
+                            'product_variant_id' => $image->product_variant_id,
+                        ];
+                    }),
                 ];
             }),
 
-            'productImages' => $this->variants->flatMap(function ($variant) {
-                return $variant->images->map(function ($image) use ($variant) {
-                    return [
-                        'id' => $image->id,
-                        'image_path' => $image->image_path,
-                        'is_main' => $image->is_main,
-                        'created_at' => $image->created_at,
-                        'updated_at' => $image->updated_at,
-                        'product_id' => $variant->product_id,
-                        'product_variant_id' => $image->product_variant_id,
-                    ];
-                });
-            }),
+
+
+
             'reviews' => $this->reviews->map(function ($review) {
                 return [
                     'id' => $review->id,
