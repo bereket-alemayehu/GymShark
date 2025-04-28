@@ -43,7 +43,7 @@ class ProductVariantResource extends Resource
                 // Multi-select for colors (using Color Picker or predefined options)
                 Forms\Components\Select::make('color')
                     ->label('Colors')
-                    ->multiple()  // Allow multiple selections
+                    //->multiple()  // Allow multiple selections
                     ->options([
                         'red' => 'Red',
                         'tomato' => 'Tomato',
