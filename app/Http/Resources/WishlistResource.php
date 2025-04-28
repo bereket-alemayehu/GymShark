@@ -28,10 +28,10 @@ class WishlistResource extends JsonResource
                 'discount_price' => $this->product->discount_price,
                 'image' => $this->product->image,
                 'slug' => $this->product->slug,
-                'category' => [
-                    'id' => $this->product->productCategory->id,
-                    'name' => $this->product->productCategory->name,
-                ],
+                // 'category' => [
+                //     'id' => $this->product->productCategory->id,
+                //     'name' => $this->product->productCategory->name,
+                // ],
             ],
             
             'created_at' => $this->created_at,
