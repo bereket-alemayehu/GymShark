@@ -18,7 +18,7 @@ class ProductCategoryResource extends Resource
 {
     protected static ?string $model = ProductCategory::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-tag';
     protected static ?string $navigationGroup = 'Product Management System';
     protected static ?int $navigationSort = 1;
     protected static ?string $label = 'Product Category';
@@ -68,7 +68,7 @@ class ProductCategoryResource extends Resource
                     ->disk('public')
                     ->directory('product-category')
                     ->helperText('Upload a text file for meta description'),
-                    
+
 
 
                 Forms\Components\RichEditor::make('meta_description')
@@ -113,8 +113,10 @@ class ProductCategoryResource extends Resource
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()
+                    ->slideOver(),
                 Tables\Actions\DeleteAction::make()
+                    ->slideOver()
                     ->action(function (array $data) {
                         $record = ProductCategory::find($data['record']);
                         if ($record) {

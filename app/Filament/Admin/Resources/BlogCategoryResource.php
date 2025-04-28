@@ -18,11 +18,12 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class BlogCategoryResource extends Resource
 {
-    
+
     protected static ?string $model = BlogCategory::class;
-    protected static ?string $navigationIcon = 'heroicon-o-wallet';
+    protected static ?string $navigationIcon = 'heroicon-o-bookmark';
     protected static ?string $navigationGroup = 'Post Management System';
-    protected static ?int $navigationSort = 1; public static function getNavigationBadge(): ?string
+    protected static ?int $navigationSort = 1;
+    public static function getNavigationBadge(): ?string
     {
         return BlogCategory::count();
     }
@@ -36,7 +37,7 @@ class BlogCategoryResource extends Resource
                     ->maxLength(255)
                     ->columnSpanFull()
                     ->unique(ignoreRecord: true)
-                    
+
             ]);
     }
     public static function table(Table $table): Table
@@ -63,6 +64,7 @@ class BlogCategoryResource extends Resource
                 Tables\Actions\EditAction::make()
                     ->slideOver(),
                 Tables\Actions\DeleteAction::make()
+                    ->slideOver()
                     ->successNotification(
                         Notification::make()
                             ->success()
@@ -77,7 +79,7 @@ class BlogCategoryResource extends Resource
                 ]),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [

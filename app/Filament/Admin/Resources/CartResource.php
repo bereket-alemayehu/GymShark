@@ -17,7 +17,7 @@ class CartResource extends Resource
 {
     protected static ?string $model = Cart::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-shopping-cart';
     protected static ?string $navigationGroup = 'Cart Management';
     protected static ?int $navigationSort = 2;
     protected static ?string $navigationLabel = 'Carts';
@@ -70,7 +70,8 @@ class CartResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()
+                    ->slideOver(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

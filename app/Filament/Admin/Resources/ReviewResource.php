@@ -24,6 +24,8 @@ class ReviewResource extends Resource
     protected static ?string $pluralLabel = 'Reviews';
     protected static ?string $slug = 'reviews';
     protected static ?string $navigationLabel = 'Reviews';
+    protected static ?string $navigationParentItem = 'Product Categories';
+
     public static function getNavigationBadge(): ?string
     {
         return Review::count();
@@ -80,7 +82,8 @@ class ReviewResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()
+                    ->slideOver(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

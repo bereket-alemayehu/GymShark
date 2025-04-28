@@ -1,0 +1,83 @@
+<?php
+
+namespace App\Filament\Admin\Resources;
+
+use App\Filament\Admin\Resources\SubscriberResource\Pages;
+use App\Models\Subscriber;
+use Filament\Forms;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Form;
+use Filament\Resources\Resource;
+use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
+
+class SubscriberResource extends Resource
+{
+    protected static ?string $model = Subscriber::class;
+
+    protected static ?string $navigationIcon = 'heroicon-o-user-plus';
+    protected static ?string $navigationGroup = 'Content Management';
+    protected static ?int $navigationSort = 6;
+
+
+
+    public static function getNavigationBadge(): ?string
+    {
+        return Subscriber::count();
+    }
+
+    public static function form(Form $form): Form
+    {
+        return $form
+            ->schema([
+                TextInput::make('email')
+                    ->label('Email')
+                    ->unique()
+                    ->email()
+                    ->required()
+                    ->columnSpanFull()
+            ]);
+    }
+
+    public static function table(Table $table): Table
+    {
+        return $table
+            ->columns([
+                TextColumn::make('email')
+                    ->label('Email')
+                    ->sortable()
+                    ->searchable()
+            ])
+            ->filters([
+                //
+            ])
+            ->actions([
+                Tables\Actions\EditAction::make()
+                    ->slideOver(),
+            ])
+            ->bulkActions([
+                Tables\Actions\BulkActionGroup::make([
+                    Tables\Actions\DeleteBulkAction::make(),
+                ]),
+            ]);
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            //
+        ];
+    }
+
+    public static function getPages(): array
+    {
+        return [
+            'index' => Pages\ListSubscribers::route('/'),
+            'create' => Pages\CreateSubscriber::route('/create'),
+            'edit' => Pages\EditSubscriber::route('/{record}/edit'),
+        ];
+    }
+}

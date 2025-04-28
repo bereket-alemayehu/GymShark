@@ -16,8 +16,11 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class ContactusResource extends Resource
 {
     protected static ?string $model = Contactus::class;
+    protected static ?string $navigationLabel = 'Contact Us';
+    protected static ?string $navigationGroup = 'Content Management';
+    protected static ?string $navigationIcon = 'heroicon-o-phone';
+    protected static ?int $navigationSort = 7;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {
@@ -29,7 +32,7 @@ class ContactusResource extends Resource
                 Forms\Components\TextInput::make('email')
                     ->email()
                     ->required()
-                    ->maxLength(255),               
+                    ->maxLength(255),
                 Forms\Components\TextInput::make('phone')
                     ->tel()
                     ->maxLength(255)
@@ -50,7 +53,7 @@ class ContactusResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')
                     ->searchable(),
-                
+
                 Tables\Columns\TextColumn::make('phone')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
@@ -66,7 +69,8 @@ class ContactusResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()
+                ->slideOver(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('thumbnail')->nullable();
-            $table->foreignIdFor(BlogCategory::class)->nullable()->constrained()->cascadeOnDelete();            
+            $table->foreignIdFor(BlogCategory::class)->nullable()->constrained()->cascadeOnDelete();
             $table->text('content')->nullable();
             $table->date('published_at')->nullable(); // Date when the blog was published
             $table->timestamps();

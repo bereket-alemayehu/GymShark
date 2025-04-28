@@ -24,6 +24,8 @@ class ProductVariantResource extends Resource
     protected static ?string $pluralLabel = 'Product Variants';
     protected static ?string $slug = 'product-variants';
     protected static ?string $navigationLabel = 'Product Variants';
+    protected static ?string $navigationParentItem = 'Product Categories';
+
     public static function getNavigationBadge(): ?string
     {
         return ProductVariant::count();
@@ -200,8 +202,10 @@ class ProductVariantResource extends Resource
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\EditAction::make()
+                    ->slideOver(),
+                Tables\Actions\DeleteAction::make()
+                    ->slideOver(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

@@ -17,7 +17,7 @@ class WishlistResource extends Resource
 {
     protected static ?string $model = Wishlist::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-heart';
     protected static ?string $navigationGroup = 'Wishlist Management';
     protected static ?int $navigationSort = 4;
     protected static ?string $navigationLabel = 'Wishlists';
@@ -25,6 +25,7 @@ class WishlistResource extends Resource
     protected static ?string $pluralLabel = 'Wishlists';
     protected static ?string $slug = 'wishlists';
     protected static ?string $recordTitleAttribute = 'user_id';
+
     public static function getNavigationBadge(): ?string
     {
         return Wishlist::count();
@@ -62,7 +63,7 @@ class WishlistResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('user.name')->label('User'),
-                Tables\Columns\TextColumn::make('product.name')->label('Product'),                                
+                Tables\Columns\TextColumn::make('product.name')->label('Product'),
                 Tables\Columns\TextColumn::make('created_at')->dateTime(),
                 //
             ])
@@ -70,7 +71,8 @@ class WishlistResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()
+                    ->slideOver(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

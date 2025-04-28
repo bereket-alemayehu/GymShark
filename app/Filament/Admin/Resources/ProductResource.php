@@ -33,6 +33,8 @@ class ProductResource extends Resource
     protected static ?string $pluralLabel = 'Products';
     protected static ?string $slug = 'products';
     protected static ?string $navigationLabel = 'Products';
+    protected static ?string $navigationParentItem = 'Product Categories';
+
     public static function getNavigationBadge(): ?string
     {
         return Product::count();
@@ -214,7 +216,7 @@ class ProductResource extends Resource
                 Tables\Columns\TextColumn::make('productCategory.name')
                     ->label('Category')
                     ->searchable()
-                    ->sortable(),                
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('price')
                     ->money()
                     ->sortable(),
@@ -244,8 +246,10 @@ class ProductResource extends Resource
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\EditAction::make()
+                    ->slideOver(),
+                Tables\Actions\DeleteAction::make()
+                    ->slideOver(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

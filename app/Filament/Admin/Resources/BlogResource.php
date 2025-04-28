@@ -29,6 +29,7 @@ class BlogResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-clipboard-document-check';
     protected static ?string $navigationGroup = 'Post Management System';
+    protected static ?string $navigationParentItem = 'Blog Categories';
     protected static ?int $navigationSort = 2;
     public static function getNavigationBadge(): ?string
     {
@@ -114,6 +115,7 @@ class BlogResource extends Resource
                 Tables\Actions\EditAction::make()
                     ->slideOver(),
                 Tables\Actions\DeleteAction::make()
+                    ->slideOver()
                     ->successNotification(
                         Notification::make()
                             ->success()

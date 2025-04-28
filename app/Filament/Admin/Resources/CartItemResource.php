@@ -25,6 +25,8 @@ class CartItemResource extends Resource
     protected static ?string $pluralLabel = 'Cart Items';
     protected static ?string $slug = 'cart-items';
     protected static ?string $recordTitleAttribute = 'cart_id';
+    protected static ?string $navigationParentItem = 'Carts';
+
     public static function getNavigationBadge(): ?string
     {
         return CartItem::count();
@@ -88,7 +90,8 @@ class CartItemResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()
+                    ->slideOver(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

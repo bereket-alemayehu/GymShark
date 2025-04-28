@@ -24,11 +24,12 @@ class ProductImagesResource extends Resource
     protected static ?string $pluralLabel = 'Product Images';
     protected static ?string $slug = 'product-images';
     protected static ?string $navigationLabel = 'Product Images';
+    protected static ?string $navigationParentItem = 'Product Categories';
+
     public static function getNavigationBadge(): ?string
     {
         return ProductImages::count();
     }
-
 
     public static function form(Form $form): Form
     {
@@ -47,8 +48,8 @@ class ProductImagesResource extends Resource
                     ->preserveFilenames()
                     ->enableOpen()
                     ->enableDownload()
-                    ->enableReordering()                    
-                    
+                    ->enableReordering()
+
                     ->multiple()
                     ->maxFiles(8)
                     ->minFiles(1)
@@ -89,8 +90,10 @@ class ProductImagesResource extends Resource
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\EditAction::make()
+                    ->slideOver(),
+                Tables\Actions\DeleteAction::make()
+                    ->slideOver(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
