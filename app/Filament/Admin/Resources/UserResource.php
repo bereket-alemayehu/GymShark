@@ -38,9 +38,7 @@ class UserResource extends Resource
                     ->label('Name')
                     ->nullable(),
                 TextInput::make('role')
-                    ->label('Role')
-                    ->enum('role', ['admin,user'])
-                    ->default('user'),
+                    ->label('Role'),
                 TextInput::make('email')
                     ->label('Email')
                     ->email()
