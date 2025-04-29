@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\ContactusResource;
-use App\Models\Contactus;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 
 class ContactUsController extends Controller
@@ -15,7 +15,7 @@ class ContactUsController extends Controller
     {
         //
         // Fetch all contact us messages
-        return ContactusResource::collection(Contactus::all());
+        return ContactusResource::collection(Contact::all());
     }
 
     /**
@@ -33,35 +33,12 @@ class ContactUsController extends Controller
         ]);
 
         // Create a new contact us message
-        $contactUs = Contactus::create($validated);
+        $contactUs = Contact::create($validated);
 
         // Return the created contact us message
         return response()->json([
             'data' => new ContactusResource($contactUs),
         ]);
     }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
+    
 }
