@@ -162,8 +162,9 @@ class ProductResource extends Resource
                                     ->label('header title')
                                     ->columnSpanFull()
                                     ->placeholder('e.g. Addis OutSole ..'),
-                                Forms\Components\RichEditor::make('Header description')
+                                Forms\Components\RichEditor::make('inner_subdescription')
                                     ->columnSpanFull()
+                                    ->label('Description')
                                     ->placeholder('eg. The Addis Outsole is ...'),
                             ]),
 
