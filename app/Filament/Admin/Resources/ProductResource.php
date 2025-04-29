@@ -21,7 +21,7 @@ use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Tabs\Tab;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
-
+use PhpParser\Node\Stmt\Label;
 
 class ProductResource extends Resource
 {
@@ -86,13 +86,15 @@ class ProductResource extends Resource
                         Forms\Components\RichEditor::make('features'),
                     ]),
 
-                Section::make('Meta & SEO')
+                Section::make('Second Section')
                     ->collapsed()
                     ->schema([
                         Forms\Components\TextInput::make('meta_title')
+                        ->Label('Head line')
                             ->maxLength(255),
                         Forms\Components\RichEditor::make('meta_description')
                             ->maxLength(255)
+
                             ->columnSpanFull()
                             ->helperText('Upload a text file for meta description'),
                     ]),
@@ -100,9 +102,12 @@ class ProductResource extends Resource
                 Section::make('Additional Information')
                     ->collapsed()
                     ->schema([
-                        Forms\Components\RichEditor::make('information'),
-                        Forms\Components\RichEditor::make('size_fit'),
-                        Forms\Components\RichEditor::make('delivery_info'),
+                        Forms\Components\RichEditor::make('information')
+                        ->label('Product Info'),
+                        Forms\Components\RichEditor::make('size_fit')
+                            ->label('Size & Fit'),
+                        Forms\Components\RichEditor::make('delivery_info')
+                            ->label('Delivery Info'),
                         Forms\Components\RichEditor::make('care'),
 
                         Repeater::make('materials')

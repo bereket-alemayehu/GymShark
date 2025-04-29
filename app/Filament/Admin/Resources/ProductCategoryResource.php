@@ -34,54 +34,70 @@ class ProductCategoryResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('title')
-                    ->label('Title')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('meta_title')
-                    ->label('Meta Title')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\Select::make('type')
-                    ->options([
-                        'men' => 'Men',
-                        'women' => 'Women',
-                        'kids' => 'Kids',
-                        'accessories' => 'Accessories'
+                Forms\Components\Section::make('Section One')
+                    ->collapsed()
+                    ->columns(2) // Two columns layout for the section
+
+                    ->schema([
+                        Forms\Components\TextInput::make('name')
+                            ->required()
+                            ->label(' Category Name')
+                            ->maxLength(255)
+                            ->placeholder('e.g. Dress Glove'),
+                        Forms\Components\Select::make('type')
+                            ->options([
+                                'men' => 'Men',
+                                'women' => 'Women',
+                                'kids' => 'Kids',
+                                'accessories' => 'Accessories'
+                            ])
+                            ->label('Category Type')
+                            ->required(),
+                        Forms\Components\TextInput::make('title')
+                            ->label('Header Title')
+                            ->required()
+                            ->maxLength(255)
+                            ->columnSpanFull()
+                            ->placeholder('quickly add a title on to the image'),
+
+                        Forms\Components\RichEditor::make('description')
+                            ->label('Description')
+                            ->nullable()
+                            ->columnSpanFull()
+                            ->placeholder('description that will be displayed on the page'),
+
+                        Forms\Components\FileUpload::make('image')
+                            ->label('Promotional Image')
+                            ->nullable()
+                            ->image()
+                            ->imageEditor()
+                            ->disk('public')
+                            ->directory('product-category'),
+                        Forms\Components\FileUpload::make('banner')
+                            ->label('Background Image')
+                            ->nullable()
+                            ->image()
+                            ->imageEditor()
+                            ->disk('public')
+                            ->directory('product-category'),
                     ]),
-                Forms\Components\FileUpload::make('image')
-                    ->label('Image URL')
-                    ->nullable()
-                    ->image()
-                    ->imageEditor()
-                    ->disk('public')
-                    ->directory('product-category')
-                    ->helperText('Upload a text file for meta description'),
-                Forms\Components\FileUpload::make('banner')
-                    ->label('Banner URL')
-                    ->nullable()
-                    ->image()
-                    ->imageEditor()
-                    ->disk('public')
-                    ->directory('product-category')
-                    ->helperText('Upload a text file for meta description'),
 
+                Forms\Components\Section::make('Section Two')
+                    ->collapsed()
+                    ->columns(2) // Two columns layout for the section
+                    ->schema([
+                        Forms\Components\TextInput::make('meta_title')
+                            ->label('Headline')
+                            ->placeholder('Add  headline')
+                            ->required()
+                            ->maxLength(255),
+                        Forms\Components\RichEditor::make('meta_description')
+                            ->label(' Description')
+                            ->nullable()
+                            ->columnSpanFull()
+                            ->placeholder('Add headline  description'),
 
-
-                Forms\Components\RichEditor::make('meta_description')
-                    ->label('Meta Description')
-                    ->nullable()
-                    ->helperText('Upload a text file for meta description')
-                    ->columnSpanFull(),
-
-                Forms\Components\RichEditor::make('description')
-                    ->columnSpanFull()
-                    ->default(null)
-                    ->columnSpanFull()
-                    ->helperText('Upload a text file for description'),
+                    ]),
 
 
             ]);
@@ -101,7 +117,7 @@ class ProductCategoryResource extends Resource
                 Tables\Columns\TextColumn::make('type')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\ImageColumn::make('image') ,                   
+                Tables\Columns\ImageColumn::make('image'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
