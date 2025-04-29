@@ -76,7 +76,7 @@ class CartResource extends Resource
                     ->action(function (Cart $record) {
                         $record->delete();
                         return redirect()->route('filament.resources.carts.index');
-                    }),
+                    }), // is this action method neccessary.
             ])
 
 

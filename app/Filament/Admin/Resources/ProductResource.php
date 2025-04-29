@@ -17,6 +17,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Tabs\Tab;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
@@ -64,7 +65,7 @@ class ProductResource extends Resource
                         Forms\Components\TextInput::make('price')
                             ->required()
                             ->numeric()
-                            ->default(0.0000)
+                            ->default(0.0)
                             ->prefix('$'),
                         Forms\Components\TextInput::make('discount_price')
                             ->numeric()
@@ -120,7 +121,7 @@ class ProductResource extends Resource
                             ->reorderable() // Optional: allows drag/drop reordering
                             ->collapsible() // Optional: collapses each item
                             ->grid(2) // Optional: put title and description side-by-side
-                            ->columnSpanFull(),
+                        // ->columnSpanFull(),//  unneccessary because grid(2) override this one.
 
                     ]),
 
@@ -133,17 +134,18 @@ class ProductResource extends Resource
                             ->image()
                             ->disk('public')
                             ->directory('products/detail_image')
-                            ->preserveFilenames()
-                            ->enableOpen()
-                            ->enableDownload(),
+                            ->preserveFilenames(),
+                        // ->enableOpen()
+                        // ->enableDownload(),
                         Forms\Components\FileUpload::make('thumbnail_image')
                             ->label('Thumbnail Image')
                             ->image()
                             ->disk('public')
                             ->directory('products/thumbnail_image')
                             ->preserveFilenames()
-                            ->enableOpen()
-                            ->enableDownload(),
+                        // ->enableOpen()
+                        // ->enableDownload()
+                        ,
                     ]),
 
                 Section::make('Inner Details')
@@ -181,14 +183,15 @@ class ProductResource extends Resource
                                     ->disk('public')
                                     ->directory('products/inner_image')
                                     ->preserveFilenames()
-                                    ->enableOpen()
-                                    ->enableDownload(),
+                                // ->enableOpen()
+                                // ->enableDownload()
+                                ,
                                 Forms\Components\TextInput::make('made_in')
                                     ->maxLength(255)
                                     ->label('Made In')
                                     ->placeholder('Enter the country of origin')
                                     ->helperText('Enter the country of origin')
-                                    ->disableLabel()
+                                    // ->disableLabel()
                                     ->default('Made in Ethiopia'),
                                 Forms\Components\MarkdownEditor::make('inner_baseunit')
                                     ->nullable()
