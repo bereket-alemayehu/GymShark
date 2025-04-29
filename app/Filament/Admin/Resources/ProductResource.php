@@ -86,7 +86,7 @@ class ProductResource extends Resource
                     ->collapsed()
                     ->schema([
                         Forms\Components\TextInput::make('meta_title')
-                        ->Label('Head line')
+                            ->Label('Head line')
                             ->maxLength(255),
                         Forms\Components\RichEditor::make('meta_description')
                             ->maxLength(255)
@@ -99,7 +99,7 @@ class ProductResource extends Resource
                     ->collapsed()
                     ->schema([
                         Forms\Components\RichEditor::make('information')
-                        ->label('Product Info'),
+                            ->label('Product Info'),
                         Forms\Components\RichEditor::make('size_fit')
                             ->label('Size & Fit'),
                         Forms\Components\RichEditor::make('delivery_info')
