@@ -3914,3 +3914,33 @@ Did you mean one of these?
 #50 {main}
 >>>>>>> 892b23b39322b639982e6bd165eddddd7dccaa50
 "} 
+[2025-04-29 10:10:57] local.ERROR: Command "filament:cache-clear" is not defined.
+
+Did you mean one of these?
+    filament:about
+    filament:assets
+    filament:cache-components
+    filament:check-translations
+    filament:clear-cached-components
+    filament:install
+    filament:optimize
+    filament:optimize-clear
+    filament:upgrade {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"filament:cache-clear\" is not defined.
+
+Did you mean one of these?
+    filament:about
+    filament:assets
+    filament:cache-components
+    filament:check-translations
+    filament:clear-cached-components
+    filament:install
+    filament:optimize
+    filament:optimize-clear
+    filament:upgrade at C:\\xampp\\htdocs\\Gymshark\\vendor\\symfony\\console\\Application.php:737)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\Gymshark\\vendor\\symfony\\console\\Application.php(266): Symfony\\Component\\Console\\Application->find('filament:cache-...')
+#1 C:\\xampp\\htdocs\\Gymshark\\vendor\\symfony\\console\\Application.php(175): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#2 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(201): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 C:\\xampp\\htdocs\\Gymshark\\artisan(35): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 {main}
+"} 
