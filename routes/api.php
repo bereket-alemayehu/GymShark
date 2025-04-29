@@ -53,6 +53,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('cart-items/{cartItemId}', [CartItemController::class, 'update']); // Update cart item
     Route::delete('cart-items/{cartItemId}', [CartItemController::class, 'destroy']); // Remove cart item
 });
+// Order routes (with auth)
+Route::middleware('auth:sanctum')->group(function () {
+    Route::apiResource('/orders', OrderController::class); // Place an order
+});
 
 // Authentication routes
 Route::post("auth/register", [AuthController::class, "register"]);

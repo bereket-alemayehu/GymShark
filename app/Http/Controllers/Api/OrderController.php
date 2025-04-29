@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-    public function placeOrder(Request $request)
+    public function store(Request $request)
     {
         $cart = Cart::where('user_id', auth()->id())->first();
         $totalPrice = $cart->cartItems->sum(function ($item) {
@@ -22,6 +22,8 @@ class OrderController extends Controller
             'user_id' => auth()->id(),
             'total_price' => $totalPrice,
             'payment_status' => 'pending',
+            'payment_reference' => null,
+            'payment_method' => 'Bank Transfer',
         ]);
 
         foreach ($cart->cartItems as $cartItem) {
@@ -29,7 +31,8 @@ class OrderController extends Controller
                 'order_id' => $order->id,
                 'product_variant_id' => $cartItem->product_variant_id,
                 'quantity' => $cartItem->quantity,
-                'price' => $cartItem->productVariant->price,
+                'price' => $cartItem->price,
+                'total_price' => $cartItem->total_price,
             ]);
         }
 
