@@ -13,6 +13,8 @@ use App\Http\Controllers\PromotionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -30,7 +32,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // Blog routes
 Route::apiResource('/blogs', BlogController::class);
-Route::get('/blog-categories', [\App\Http\Controllers\Api\BlogCategoryController::class, 'index']);
+// Route::get('/blog-categories', [\App\Http\Controllers\Api\BlogCategoryController::class, 'index']);
 Route::apiResource('/blog-categories', \App\Http\Controllers\Api\BlogCategoryController::class);
 
 // Product-related routes

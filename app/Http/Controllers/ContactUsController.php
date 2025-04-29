@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\ContactUsResource;
-use App\Models\ContactUs;
+use App\Http\Resources\ContactusResource;
+use App\Models\Contactus;
 use Illuminate\Http\Request;
 
 class ContactUsController extends Controller
@@ -15,7 +15,7 @@ class ContactUsController extends Controller
     {
         //
         // Fetch all contact us messages
-         return ContactUsResource::collection(ContactUs::all());
+        return ContactusResource::collection(Contactus::all());
     }
 
     /**
@@ -27,17 +27,17 @@ class ContactUsController extends Controller
         // Validate the request
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',   
+            'email' => 'required|email|max:255',
             'phone' => 'nullable|string|max:20',
             'message' => 'required|string',
         ]);
 
         // Create a new contact us message
-        $contactUs = ContactUs::create($validated);
+        $contactUs = Contactus::create($validated);
 
         // Return the created contact us message
         return response()->json([
-            'data' => new ContactUsResource($contactUs),
+            'data' => new ContactusResource($contactUs),
         ]);
     }
 

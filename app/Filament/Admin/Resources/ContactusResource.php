@@ -3,15 +3,13 @@
 namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\ContactusResource\Pages;
-use App\Filament\Admin\Resources\ContactusResource\RelationManagers;
 use App\Models\Contactus;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+
 
 class ContactusResource extends Resource
 {
@@ -70,7 +68,7 @@ class ContactusResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make()
-                ->slideOver(),
+                    ->slideOver(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
