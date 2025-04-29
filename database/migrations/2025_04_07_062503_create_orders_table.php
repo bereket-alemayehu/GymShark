@@ -19,7 +19,8 @@ return new class extends Migration
             $table->decimal('total_price', 20, 4);
             $table->string('payment_status')->default('pending'); // Pending, Completed, Failed
             $table->string('payment_reference')->nullable(); // Chapa Payment Reference
-            $table->string('payment_method');
+            $table->string('payment_method')->nullable(); // Chapa, Stripe, etc.
+
         });
     }
 

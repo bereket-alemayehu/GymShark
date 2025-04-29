@@ -33,17 +33,21 @@ class CartController extends Controller
      */
     public function store(Request $request, $productVariantId)
     {
-        // Validate incoming request
+        // Validate the quantity coming from the request
         $request->validate([
             'quantity' => 'required|integer|min:1', // Ensure valid quantity
         ]);
 
+        // Find the product variant by ID
         $productVariant = ProductVariant::findOrFail($productVariantId);
 
         // Get or create the user's active cart
         $cart = Cart::firstOrCreate(
             ['user_id' => Auth::id(), 'status' => 'active']
         );
+
+        // Get the price from the product (assuming your Product model has a price)
+        $price = $productVariant->product->price ?? 0;
 
         // Check if the product variant already exists in the cart
         $cartItem = CartItem::where('cart_id', $cart->id)
@@ -61,8 +65,8 @@ class CartController extends Controller
                 'cart_id' => $cart->id,
                 'product_variant_id' => $productVariant->id,
                 'quantity' => $request->quantity,
-                'price' => $productVariant->price,
-                'total_price' => $request->quantity * $productVariant->price,
+                'price' => $price,
+                'total_price' => $request->quantity * $price,
             ]);
         }
 

@@ -50,7 +50,7 @@ class CartItemController extends Controller
                 'cart_id' => $cart->id,
                 'product_variant_id' => $productVariant->id,
                 'quantity' => $request->quantity,
-                'price' => $productVariant->price,
+                //'price' => $productVariant->price,
                 'total_price' => $request->quantity * $productVariant->price,
             ]);
         }
