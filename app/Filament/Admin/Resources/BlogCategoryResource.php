@@ -3,9 +3,7 @@
 namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\BlogCategoryResource\Pages;
-use App\Filament\Admin\Resources\BlogCategoryResource\RelationManagers;
 use App\Models\BlogCategory;
-use Filament\Forms;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Notifications\Notification;
@@ -13,8 +11,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+
 
 class BlogCategoryResource extends Resource
 {
@@ -32,7 +29,8 @@ class BlogCategoryResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('name')->required()
+                TextInput::make('name')
+                    ->required()
                     ->label('Category Name')
                     ->maxLength(255)
                     ->columnSpanFull()
@@ -68,8 +66,7 @@ class BlogCategoryResource extends Resource
                     ->successNotification(
                         Notification::make()
                             ->success()
-                            ->title('Category Deleted')
-                            ->body('Categroy Deleted Successfully')
+                            ->title('Category Deleted Successfully')
                     )
 
             ])

@@ -3,22 +3,19 @@
 namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\CartItemResource\Pages;
-use App\Filament\Admin\Resources\CartItemResource\RelationManagers;
 use App\Models\CartItem;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+
 
 class CartItemResource extends Resource
 {
     protected static ?string $model = CartItem::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
+    protected static ?string $navigationParentItem = 'Carts';
     protected static ?string $navigationGroup = 'payment & Order Management';
     protected static ?int $navigationSort = 5;
     protected static ?string $navigationLabel = 'Cart Items';
@@ -63,7 +60,7 @@ class CartItemResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('product_variant.sku')
                     ->label('Product Variant SKU')
-                    ->sortable()                   
+                    ->sortable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('quantity')
                     ->numeric()

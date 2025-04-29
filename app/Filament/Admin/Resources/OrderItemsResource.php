@@ -25,6 +25,8 @@ class OrderItemsResource extends Resource
     protected static ?string $pluralLabel = 'Order Items';
     protected static ?string $title = 'Order Item';
     protected static ?string $slug = 'order-items';
+    protected static ?string $navigationParentItem = 'Orders';
+
     public static function getNavigationBadge(): ?string
     {
         return OrderItems::count();

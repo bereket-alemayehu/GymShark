@@ -3,11 +3,9 @@
 namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\BlogResource\Pages;
-use App\Filament\Admin\Resources\BlogResource\RelationManagers;
 use App\Models\Blog;
 use App\Models\BlogCategory;
 use DateTime;
-use Filament\Forms;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\MarkdownEditor;
@@ -20,14 +18,11 @@ use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Filament\Notifications\Notification;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class BlogResource extends Resource
 {
     protected static ?string $model = Blog::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-clipboard-document-check';
     protected static ?string $navigationGroup = 'Post Management System';
     protected static ?string $navigationParentItem = 'Blog Categories';
     protected static ?int $navigationSort = 2;
@@ -63,8 +58,6 @@ class BlogResource extends Resource
                     ->directory('thumbnails')
                     ->image()
                     ->columnSpanFull(),
-
-
                 MarkdownEditor::make('content')
                     ->required()
                     ->columnSpanFull(),
@@ -81,8 +74,6 @@ class BlogResource extends Resource
                 TextColumn::make('row_number')
                     ->label('ID')
                     ->getStateUsing(fn($rowLoop, $record) => $rowLoop->iteration),
-
-
                 ImageColumn::make('thumbnail')
                     ->label('Image')
                     ->circular(),
@@ -119,8 +110,7 @@ class BlogResource extends Resource
                     ->successNotification(
                         Notification::make()
                             ->success()
-                            ->title('Blog Deleted')
-                            ->body('Blog Deleted Successfully')
+                            ->title('Blog Deleted Successfully')
                     ),
 
             ])
