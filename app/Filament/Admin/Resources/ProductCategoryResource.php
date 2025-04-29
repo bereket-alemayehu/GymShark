@@ -3,7 +3,6 @@
 namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\ProductCategoryResource\Pages;
-use App\Filament\Admin\Resources\ProductCategoryResource\RelationManagers;
 use App\Models\ProductCategory;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -11,8 +10,7 @@ use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+
 
 class ProductCategoryResource extends Resource
 {

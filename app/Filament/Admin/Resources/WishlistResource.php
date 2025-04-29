@@ -4,15 +4,12 @@ namespace App\Filament\Admin\Resources;
 
 use Filament\Forms;
 use Filament\Tables;
-use Pages\ViewWishlist;
 use App\Models\Wishlist;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Admin\Resources\WishlistResource\Pages;
-use App\Filament\Admin\Resources\WishlistResource\RelationManagers;
+use App\Filament\Admin\Resources\WishlistResource\Pages\ViewWishlist;
 
 class WishlistResource extends Resource
 {
@@ -54,7 +51,7 @@ class WishlistResource extends Resource
                 Forms\Components\Select::make('product_id')
                     ->relationship('product', 'name')
                     ->required(),
-                //
+
             ]);
     }
 
@@ -73,14 +70,14 @@ class WishlistResource extends Resource
             ->actions([
                 Tables\Actions\ActionGroup::make([
                     Tables\Actions\ViewAction::make()
-                        ->url(fn(Wishlist $record): string => route('filament.resources.wishlists.view', $record)),
+                        ->url(fn(Wishlist $record): string => route('filament.admin.resources.wishlists.view', $record)),
                     Tables\Actions\Action::make('Edit')
-                        ->url(fn(Wishlist $record): string => route('filament.resources.wishlists.edit', $record)),
+                        ->url(fn(Wishlist $record): string => route('filament.admin.resources.wishlists.edit', $record)),
 
                     Tables\Actions\Action::make('Delete')
                         ->action(function (Wishlist $record) {
                             $record->delete();
-                            return redirect()->route('filament.resources.wishlists.index');
+                            return redirect()->route('filament.admin.resources.wishlists.index');
                         })
                         ->color('danger')
                         ->icon('heroicon-o-trash'),
@@ -108,6 +105,7 @@ class WishlistResource extends Resource
             'index' => Pages\ListWishlists::route('/'),
             'create' => Pages\CreateWishlist::route('/create'),
             'edit' => Pages\EditWishlist::route('/{record}/edit'),
+            'view' => ViewWishlist::route('/{record}'),
         ];
     }
 }
