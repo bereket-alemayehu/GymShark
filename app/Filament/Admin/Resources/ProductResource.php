@@ -100,8 +100,7 @@ class ProductResource extends Resource
                 Section::make('Additional Information')
                     ->collapsed()
                     ->schema([
-                        Forms\Components\RichEditor::make('information')
-                            ->maxLength(255),
+                        Forms\Components\RichEditor::make('information'),
                         Forms\Components\RichEditor::make('size_fit'),
                         Forms\Components\RichEditor::make('delivery_info'),
                         Forms\Components\RichEditor::make('care'),
