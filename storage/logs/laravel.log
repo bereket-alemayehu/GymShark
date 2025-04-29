@@ -3914,6 +3914,7 @@ Did you mean one of these?
 #50 {main}
 >>>>>>> 892b23b39322b639982e6bd165eddddd7dccaa50
 "} 
+<<<<<<< HEAD
 [2025-04-29 10:11:33] local.ERROR: Route [filament.resources.wishlists.view] not defined. {"view":{"view":"C:\\xampp\\htdocs\\helders\\GymsharkProject\\vendor\\filament\\tables\\resources\\views\\index.blade.php","data":[]},"userId":1,"exception":"[object] (Spatie\\LaravelIgnition\\Exceptions\\ViewException(code: 0): Route [filament.resources.wishlists.view] not defined. at C:\\xampp\\htdocs\\helders\\GymsharkProject\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\UrlGenerator.php:477)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\helders\\GymsharkProject\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\helpers.php(811): Illuminate\\Routing\\UrlGenerator->route('filament.resour...', Object(App\\Models\\Wishlist), true)
@@ -5117,4 +5118,119 @@ Did you mean one of these?
 #131 C:\\xampp\\htdocs\\helders\\GymsharkProject\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #132 C:\\xampp\\htdocs\\helders\\GymsharkProject\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(16): require_once('C:\\\\xampp\\\\htdocs...')
 #133 {main}
+=======
+[2025-04-29 10:10:57] local.ERROR: Command "filament:cache-clear" is not defined.
+
+Did you mean one of these?
+    filament:about
+    filament:assets
+    filament:cache-components
+    filament:check-translations
+    filament:clear-cached-components
+    filament:install
+    filament:optimize
+    filament:optimize-clear
+    filament:upgrade {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"filament:cache-clear\" is not defined.
+
+Did you mean one of these?
+    filament:about
+    filament:assets
+    filament:cache-components
+    filament:check-translations
+    filament:clear-cached-components
+    filament:install
+    filament:optimize
+    filament:optimize-clear
+    filament:upgrade at C:\\xampp\\htdocs\\Gymshark\\vendor\\symfony\\console\\Application.php:737)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\Gymshark\\vendor\\symfony\\console\\Application.php(266): Symfony\\Component\\Console\\Application->find('filament:cache-...')
+#1 C:\\xampp\\htdocs\\Gymshark\\vendor\\symfony\\console\\Application.php(175): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#2 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(201): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 C:\\xampp\\htdocs\\Gymshark\\artisan(35): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 {main}
+"} 
+[2025-04-29 11:39:34] local.ERROR: Method Filament\Forms\Components\FileUpload::description does not exist. {"userId":1,"exception":"[object] (BadMethodCallException(code: 0): Method Filament\\Forms\\Components\\FileUpload::description does not exist. at C:\\xampp\\htdocs\\Gymshark\\vendor\\filament\\support\\src\\Concerns\\Macroable.php:72)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\Gymshark\\app\\Filament\\Admin\\Resources\\ProductCategoryResource.php(82): Filament\\Support\\Components\\Component->__call('description', Array)
+#1 C:\\xampp\\htdocs\\Gymshark\\vendor\\filament\\filament\\src\\Resources\\Pages\\CreateRecord.php(268): App\\Filament\\Admin\\Resources\\ProductCategoryResource::form(Object(Filament\\Forms\\Form))
+#2 C:\\xampp\\htdocs\\Gymshark\\vendor\\filament\\forms\\src\\Concerns\\InteractsWithForms.php(331): Filament\\Resources\\Pages\\CreateRecord->getForms()
+#3 C:\\xampp\\htdocs\\Gymshark\\vendor\\filament\\forms\\src\\Concerns\\InteractsWithForms.php(402): Filament\\Pages\\BasePage->cacheForms()
+#4 C:\\xampp\\htdocs\\Gymshark\\vendor\\filament\\forms\\src\\Concerns\\InteractsWithForms.php(393): Filament\\Pages\\BasePage->getCachedForms()
+#5 C:\\xampp\\htdocs\\Gymshark\\vendor\\filament\\support\\src\\Concerns\\ResolvesDynamicLivewireProperties.php(27): Filament\\Pages\\BasePage->getForm('form')
+#6 C:\\xampp\\htdocs\\Gymshark\\vendor\\filament\\filament\\src\\Resources\\Pages\\CreateRecord.php(72): Filament\\Pages\\BasePage->__get('form')
+#7 C:\\xampp\\htdocs\\Gymshark\\vendor\\filament\\filament\\src\\Resources\\Pages\\CreateRecord.php(58): Filament\\Resources\\Pages\\CreateRecord->fillForm()
+#8 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Filament\\Resources\\Pages\\CreateRecord->mount()
+#9 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#10 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#11 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#12 C:\\xampp\\htdocs\\Gymshark\\vendor\\livewire\\livewire\\src\\Wrapped.php(23): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array)
+#13 C:\\xampp\\htdocs\\Gymshark\\vendor\\livewire\\livewire\\src\\Features\\SupportLifecycleHooks\\SupportLifecycleHooks.php(134): Livewire\\Wrapped->__call('mount', Array)
+#14 C:\\xampp\\htdocs\\Gymshark\\vendor\\livewire\\livewire\\src\\Features\\SupportLifecycleHooks\\SupportLifecycleHooks.php(20): Livewire\\Features\\SupportLifecycleHooks\\SupportLifecycleHooks->callHook('mount', Array)
+#15 C:\\xampp\\htdocs\\Gymshark\\vendor\\livewire\\livewire\\src\\ComponentHook.php(19): Livewire\\Features\\SupportLifecycleHooks\\SupportLifecycleHooks->mount(Array, false)
+#16 C:\\xampp\\htdocs\\Gymshark\\vendor\\livewire\\livewire\\src\\ComponentHookRegistry.php(45): Livewire\\ComponentHook->callMount(Array, false)
+#17 C:\\xampp\\htdocs\\Gymshark\\vendor\\livewire\\livewire\\src\\EventBus.php(60): Livewire\\ComponentHookRegistry::Livewire\\{closure}(Object(App\\Filament\\Admin\\Resources\\ProductCategoryResource\\Pages\\CreateProductCategory), Array, NULL, false)
+#18 C:\\xampp\\htdocs\\Gymshark\\vendor\\livewire\\livewire\\src\\helpers.php(98): Livewire\\EventBus->trigger('mount', Object(App\\Filament\\Admin\\Resources\\ProductCategoryResource\\Pages\\CreateProductCategory), Array, NULL, false)
+#19 C:\\xampp\\htdocs\\Gymshark\\vendor\\livewire\\livewire\\src\\Mechanisms\\HandleComponents\\HandleComponents.php(50): Livewire\\trigger('mount', Object(App\\Filament\\Admin\\Resources\\ProductCategoryResource\\Pages\\CreateProductCategory), Array, NULL, false)
+#20 C:\\xampp\\htdocs\\Gymshark\\vendor\\livewire\\livewire\\src\\LivewireManager.php(73): Livewire\\Mechanisms\\HandleComponents\\HandleComponents->mount('App\\\\Filament\\\\Ad...', Array, NULL)
+#21 C:\\xampp\\htdocs\\Gymshark\\vendor\\livewire\\livewire\\src\\Features\\SupportPageComponents\\HandlesPageComponents.php(17): Livewire\\LivewireManager->mount('App\\\\Filament\\\\Ad...', Array)
+#22 C:\\xampp\\htdocs\\Gymshark\\vendor\\livewire\\livewire\\src\\Features\\SupportPageComponents\\SupportPageComponents.php(117): Livewire\\Component->Livewire\\Features\\SupportPageComponents\\{closure}()
+#23 C:\\xampp\\htdocs\\Gymshark\\vendor\\livewire\\livewire\\src\\Features\\SupportPageComponents\\HandlesPageComponents.php(14): Livewire\\Features\\SupportPageComponents\\SupportPageComponents::interceptTheRenderOfTheComponentAndRetreiveTheLayoutConfiguration(Object(Closure))
+#24 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\ControllerDispatcher.php(46): Livewire\\Component->__invoke()
+#25 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(259): Illuminate\\Routing\\ControllerDispatcher->dispatch(Object(Illuminate\\Routing\\Route), Object(App\\Filament\\Admin\\Resources\\ProductCategoryResource\\Pages\\CreateProductCategory), '__invoke')
+#26 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(205): Illuminate\\Routing\\Route->runController()
+#27 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(806): Illuminate\\Routing\\Route->run()
+#28 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#29 C:\\xampp\\htdocs\\Gymshark\\vendor\\filament\\filament\\src\\Http\\Middleware\\DispatchServingFilamentEvent.php(15): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#30 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Filament\\Http\\Middleware\\DispatchServingFilamentEvent->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#31 C:\\xampp\\htdocs\\Gymshark\\vendor\\filament\\filament\\src\\Http\\Middleware\\DisableBladeIconComponents.php(14): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#32 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Filament\\Http\\Middleware\\DisableBladeIconComponents->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#33 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php(50): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#34 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#35 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken.php(78): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#36 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#37 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\AuthenticateSession.php(60): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#38 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Session\\Middleware\\AuthenticateSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#39 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Auth\\Middleware\\Authenticate.php(57): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#40 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Auth\\Middleware\\Authenticate->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#41 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Middleware\\ShareErrorsFromSession.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#42 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\View\\Middleware\\ShareErrorsFromSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#43 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php(121): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#44 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php(64): Illuminate\\Session\\Middleware\\StartSession->handleStatefulRequest(Object(Illuminate\\Http\\Request), Object(Illuminate\\Session\\Store), Object(Closure))
+#45 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Session\\Middleware\\StartSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#46 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse.php(37): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#47 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#48 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\EncryptCookies.php(67): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#49 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#50 C:\\xampp\\htdocs\\Gymshark\\vendor\\filament\\filament\\src\\Http\\Middleware\\SetUpPanel.php(19): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#51 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Filament\\Http\\Middleware\\SetUpPanel->handle(Object(Illuminate\\Http\\Request), Object(Closure), Object(Filament\\Panel))
+#52 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#53 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(805): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#54 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(784): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+#55 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(748): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+#56 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(737): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+#57 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(200): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+#58 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+#59 C:\\xampp\\htdocs\\Gymshark\\vendor\\livewire\\livewire\\src\\Features\\SupportDisablingBackButtonCache\\DisableBackButtonCacheMiddleware.php(19): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#60 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Livewire\\Features\\SupportDisablingBackButtonCache\\DisableBackButtonCacheMiddleware->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#61 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#62 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#63 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#64 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#65 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TrimStrings.php(40): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#66 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#67 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#68 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#69 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance.php(99): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#70 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#71 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\HandleCors.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#72 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\HandleCors->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#73 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#74 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#75 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#76 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(175): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#77 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#78 C:\\xampp\\htdocs\\Gymshark\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#79 C:\\xampp\\htdocs\\Gymshark\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(16): require_once('C:\\\\xampp\\\\htdocs...')
+#80 {main}
+>>>>>>> 3827672cdc2f0961fb5aab9ad926f3f04c303f2f
 "} 
