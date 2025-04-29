@@ -171,18 +171,22 @@ class ProductResource extends Resource
                             ->schema([
                                 Forms\Components\TextInput::make('inner_base')
                                     ->label(' Base Name')
+                                    ->placeholder('e.g. SoleBase')
                                     ->maxLength(255),
                                 Forms\Components\TextInput::make('inner_basevalue')
                                     ->label(' Base Value')
+                                    ->placeholder('e.g. 4mm')
                                     ->maxLength(255),
                             ]),
                         Grid::make(2)
                             ->schema([
                                 Forms\Components\TextInput::make('inner_depth')
                                     ->maxLength(255)
-                                    ->label('Depth Name'),
+                                    ->label('Depth Name')
+                                    ->placeholder('e.g. Tread Depth'),
                                 Forms\Components\TextInput::make('inner_depthvalue')
                                     ->label('Depth Value')
+                                    ->placeholder('e.g. 0mm')
                                     ->maxLength(255),
                             ]),
                         Grid::make(2)
@@ -190,7 +194,8 @@ class ProductResource extends Resource
                                 Forms\Components\TextInput::make('meta_title')
                                     ->Label('Image Title')
                                     ->placeholder('e.g. EMBRACE YOUR HUMAN NATURE')
-                                    ->maxLength(255),
+                                    ->maxLength(255)
+                                    ->columnSpanFull(),
                                 Forms\Components\RichEditor::make('meta_description')
                                     ->maxLength(255)
                                     ->label('Image Description')
