@@ -6,6 +6,8 @@ use App\Filament\Admin\Resources\ProductResource\Pages;
 use App\Models\Product;
 use Filament\Forms;
 use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\Group;
+use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
@@ -41,7 +43,7 @@ class ProductResource extends Resource
     {
         return $form
             ->schema([
-                Section::make('Basic Info')
+                Section::make('Section One')
                     ->collapsed()
                     ->columns(2) // Two columns layout for the section
                     ->schema([
@@ -51,13 +53,8 @@ class ProductResource extends Resource
                             ->required(),
                         Forms\Components\TextInput::make('name')
                             ->required()
+                            ->placeholder('e.g. Primus Trail Knit   Mens')
                             ->maxLength(255),
-                    ]),
-
-                Section::make('Pricing & Status')
-                    ->collapsed()
-                    ->columns(2)
-                    ->schema([
                         Forms\Components\TextInput::make('price')
                             ->required()
                             ->numeric()
@@ -73,46 +70,33 @@ class ProductResource extends Resource
                             ->default(false),
                         Forms\Components\Toggle::make('is_popular')
                             ->default(false),
+                        Forms\Components\RichEditor::make('description')
+                            ->label(' Description')
+                            ->columnSpanFull(),
+                        Forms\Components\RichEditor::make('features')
+                            ->label('Delivery & Returns')
+                            ->columnSpanFull(),
                     ]),
 
-                Section::make('Descriptions')
+                Section::make('Section Two')
                     ->collapsed()
                     ->schema([
-                        Forms\Components\RichEditor::make('description'),
-                        Forms\Components\RichEditor::make('features'),
-                    ]),
-
-                Section::make('Second Section')
-                    ->collapsed()
-                    ->schema([
-                        Forms\Components\TextInput::make('meta_title')
-                            ->Label('Head line')
-                            ->maxLength(255),
-                        Forms\Components\RichEditor::make('meta_description')
-                            ->maxLength(255)
-
-                            ->columnSpanFull()
-                            ->helperText('Upload a text file for meta description'),
-                    ]),
-
-                Section::make('Additional Information')
-                    ->collapsed()
-                    ->schema([
+                        Forms\Components\TextInput::make('title')
+                            ->nullable()
+                            ->label('Header Title for the Second Section')
+                            ->placeholder('e.g. HandCrafted Leather Shoes , ...'),
                         Forms\Components\RichEditor::make('information')
                             ->label('Product Info'),
                         Forms\Components\RichEditor::make('size_fit')
                             ->label('Size & Fit'),
                         Forms\Components\RichEditor::make('delivery_info')
                             ->label('Delivery Info'),
-                        Forms\Components\RichEditor::make('care'),
-
                         Repeater::make('materials')
                             ->label('Materials')
                             ->schema([
                                 TextInput::make('title')
                                     ->required()
                                     ->label('Material Title'),
-
                                 Textarea::make('description')
                                     ->label('Material Description')
                                     ->rows(3),
@@ -120,83 +104,111 @@ class ProductResource extends Resource
                             ->addActionLabel('Add Material')
                             ->reorderable() // Optional: allows drag/drop reordering
                             ->collapsible() // Optional: collapses each item
-                            ->grid(2) // Optional: put title and description side-by-side
+                            ->grid(2), // Optional: put title and description side-by-side
                         // ->columnSpanFull(),//  unneccessary because grid(2) override this one.
+
+                        Forms\Components\RichEditor::make('care')
+                            ->label('Care Guide'),
+                        Forms\Components\TextInput::make('made_in')
+                            ->maxLength(255)
+                            ->label('Made In')
+                            ->placeholder('Enter the country of origin')
+                            ->default('Made in Ethiopia'),
+
+
 
                     ]),
 
-                Section::make('Images')
+                Section::make('Section Three')
                     ->collapsed()
-                    ->columns(2)
+                    // ->columns(2)
                     ->schema([
-                        Forms\Components\FileUpload::make('detail_image')
-                            ->label('Detail Image')
-                            ->image()
-                            ->disk('public')
-                            ->directory('products/detail_image')
-                            ->preserveFilenames(),
-                        // ->enableOpen()
-                        // ->enableDownload(),
+                        // Forms\Components\FileUpload::make('detail_image')
+                        //     ->label('Detail Image')
+                        //     ->image()
+                        //     ->disk('public')
+                        //     ->directory('products/detail_image')
+                        //     ->preserveFilenames(),
+                        // // ->enableOpen()
+                        // // ->enableDownload(),
                         Forms\Components\FileUpload::make('thumbnail_image')
-                            ->label('Thumbnail Image')
+                            ->label('Banner Image')
                             ->image()
                             ->disk('public')
                             ->directory('products/thumbnail_image')
                             ->preserveFilenames()
-                        // ->enableOpen()
-                        // ->enableDownload()
-                        ,
+                            ->enableOpen()
+                            ->enableDownload()
+                            ->columnSpanFull(),
+                        Forms\Components\TextInput::make('inner_title')
+                            ->maxLength(255)
+                            ->label('Inner Title')
+                            ->columnSpanFull()
+                            ->placeholder('e.g. Give your feet He Chance To Feel ..'),
+                        Forms\Components\RichEditor::make('inner_description')
+                            ->columnSpanFull(),
                     ]),
 
-                Section::make('Inner Details')
+                Section::make('Section Four')
                     ->collapsed()
                     ->schema([
                         Grid::make(2)
                             ->schema([
-                                Forms\Components\TextInput::make('inner_title')
-                                    ->maxLength(255),
                                 Forms\Components\TextInput::make('inner_subtitle')
-                                    ->maxLength(255),
+                                    ->maxLength(255)
+                                    ->label('header title')
+                                    ->columnSpanFull()
+                                    ->placeholder('e.g. Addis OutSole ..'),
+                                Forms\Components\RichEditor::make('inner_subdescription')
+                                    ->columnSpanFull()
+                                    ->label('Description')
+                                    ->placeholder('eg. The Addis Outsole is ...'),
                             ]),
 
-                        Forms\Components\RichEditor::make('inner_description'),
-                        Forms\Components\RichEditor::make('inner_subdescription'),
                         Grid::make(2)
                             ->schema([
                                 Forms\Components\TextInput::make('inner_base')
+                                    ->label(' Base Name')
+                                    ->placeholder('e.g. SoleBase')
                                     ->maxLength(255),
                                 Forms\Components\TextInput::make('inner_basevalue')
+                                    ->label(' Base Value')
+                                    ->placeholder('e.g. 4mm')
                                     ->maxLength(255),
                             ]),
                         Grid::make(2)
                             ->schema([
                                 Forms\Components\TextInput::make('inner_depth')
-                                    ->maxLength(255),
+                                    ->maxLength(255)
+                                    ->label('Depth Name')
+                                    ->placeholder('e.g. Tread Depth'),
                                 Forms\Components\TextInput::make('inner_depthvalue')
+                                    ->label('Depth Value')
+                                    ->placeholder('e.g. 0mm')
                                     ->maxLength(255),
                             ]),
                         Grid::make(2)
                             ->schema([
+                                Forms\Components\TextInput::make('meta_title')
+                                    ->Label('Image Title')
+                                    ->placeholder('e.g. EMBRACE YOUR HUMAN NATURE')
+                                    ->maxLength(255)
+                                    ->columnSpanFull(),
+                                Forms\Components\RichEditor::make('meta_description')
+                                    ->maxLength(255)
+                                    ->label('Image Description')
+                                    ->columnSpanFull()
+                                    ->helperText('e.g The Best piece of Technology ever to '),
                                 Forms\Components\FileUpload::make('inner_image')
                                     ->label('Inner Image')
                                     ->image()
                                     ->disk('public')
                                     ->directory('products/inner_image')
                                     ->preserveFilenames()
-                                // ->enableOpen()
-                                // ->enableDownload()
-                                ,
-                                Forms\Components\TextInput::make('made_in')
-                                    ->maxLength(255)
-                                    ->label('Made In')
-                                    ->placeholder('Enter the country of origin')
-                                    ->helperText('Enter the country of origin')
-                                    // ->disableLabel()
-                                    ->default('Made in Ethiopia'),
-                                Forms\Components\MarkdownEditor::make('inner_baseunit')
-                                    ->nullable()
-                                    ->columnSpanFull()
-                                    ->helperText('Enter the base unit of measurement'),
+                                    ->enableOpen()
+                                    ->enableDownload(),
+
+
 
 
                             ]),
